@@ -1,5 +1,5 @@
 <?php
-  mysql_connect("localhost","root","") or die (mysql_error());
+  mysql_connect("localhost","root","1234") or die (mysql_error());
   mysql_select_db("secudev1") or die (mysql_error());
   $strSQL = "SELECT COUNT(*) FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
   $rs = mysql_query($strSQL);
