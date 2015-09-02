@@ -1,5 +1,5 @@
 <?php
-mysql_connect("localhost","root","") or die (mysql_error());
+mysql_connect("localhost","root","1234") or die (mysql_error());
 mysql_select_db("secudev1") or die (mysql_error());
 $strSQL = "SELECT COUNT(*) FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
 $rs = mysql_query($strSQL);
@@ -17,7 +17,7 @@ if (!preg_match("/^[a-zA-Z\s]+$/",$_POST["fullname"])) {
 } else if (!preg_match("/^[^\s]+$/",$_POST["pass"])) {
  echo "Invalid password";
 } else if ($count == 1) {
- echo "Username/password combination already taken";
+ echo "Username already taken. Try another one.";
 } else {
  if ($_POST["sex"] == 1) {
   $strSQL = "INSERT INTO userdb(name,male,salutation,bday,username,password,about,admin) VALUES ('" . $_POST["fullname"] . "'," . $_POST["sex"] . ",'" . $_POST["malesalute"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0)";
