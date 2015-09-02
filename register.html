@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Register</title>
+</head>
+<body>
+<script>
+function checkFields() {
+document.getElementById("mensalute").disabled = true
+document.getElementById("femalesalute").disabled = true
+if (document.getElementById("m").checked) {
+document.getElementById("mensalute").disabled = false
+}
+if (document.getElementById("f").checked) {
+document.getElementById("femalesalute").disabled = false
+}
+}
+setInterval("checkFields()",0)
+</script>
+<form action="submit.php" method="post">
+Name: <input type="text" name="fullname"><br>
+Gender: <input type="radio" name="sex" id="m" value="1">Male
+<input type="radio" name="sex" id="f" value="0">Female<br>
+Salutation: <select id="mensalute" name="malesalute">
+<option name="malesalute" value="Mr.">Mr.</option>
+<option name="malesalute" value="Sir">Sir</option>
+<option name="malesalute" value="Senior">Senior</option>
+<option name="malesalute" value="Count">Count</option>
+</select>
+<select id="femalesalute" name="femalesalute">
+<option name="femalesalute" value="Miss">Miss</option>
+<option name="femalesalute" value="Ms.">Ms.</option>
+<option name="femalesalute" value="Mrs.">Mrs.</option>
+<option name="femalesalute" value="Madame">Madame</option>
+<option name="femalesalute" value="Majesty">Majesty</option>
+<option name="femalesalute" value="Seniora">Seniora</option>
+</select><br>
+Birthday: <input type="date" name="bday"><br>
+Username: <input type="text" name="username"><br>
+Password: <input type="password" name="pass"><br>
+About Me: <br><textarea name="me" rows="4" cols="50"></textarea><br>
+<input type="submit">
+</form>
+</body>
+</html>
