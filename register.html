@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Register</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" charset="utf-8">
 </head>
 <body>
 <script>
@@ -16,34 +17,32 @@ document.getElementById("femalesalute").disabled = false
 }
 setInterval("checkFields()",0);
 </script>
-<form action="submit.php" method="post">
-Name: <input type="text" name="fullname" maxlength="50"><br>
-Gender: <input type="radio" name="sex" id="m" value="1">Male
-<input type="radio" name="sex" id="f" value="0">Female<br>
-Salutation: <select id="mensalute" name="malesalute">
-<option name="malesalute" value="Mr.">Mr.</option>
-<option name="malesalute" value="Sir">Sir</option>
-<option name="malesalute" value="Senior">Senior</option>
-<option name="malesalute" value="Count">Count</option>
-</select>
-<select id="femalesalute" name="femalesalute">
-<option name="femalesalute" value="Miss">Miss</option>
-<option name="femalesalute" value="Ms.">Ms.</option>
-<option name="femalesalute" value="Mrs.">Mrs.</option>
-<option name="femalesalute" value="Madame">Madame</option>
-<option name="femalesalute" value="Majesty">Majesty</option>
-<option name="femalesalute" value="Seniora">Seniora</option>
-</select><br>
-Birthday: <input type="date" name="bday"><br>
-<<<<<<< HEAD
-Username: <input type="text" name="username" maxlength=""><br>
-Password: <input type="password" name="pass"><br>
-=======
-Username: <input type="text" name="username" maxlength="50"><br>
-Password: <input type="password" name="pass" maxlength="50"><br>
->>>>>>> e6e240acd6bc59f52ac16008e77c91c052c07806
-About Me: <br><textarea name="me" rows="4" cols="50"></textarea><br>
-<input type="submit">
-</form>
+<div class="container">
+  <form action="submit.php" method="post">
+  Name: <input type="text" name="fullname" maxlength="50"><br>
+  Gender: <input type="radio" name="sex" id="m" value="1">Male
+  <input type="radio" name="sex" id="f" value="0">Female<br>
+  Salutation: <select id="mensalute" name="malesalute">
+  <option name="malesalute" value="Mr.">Mr.</option>
+  <option name="malesalute" value="Sir">Sir</option>
+  <option name="malesalute" value="Senior">Senior</option>
+  <option name="malesalute" value="Count">Count</option>
+  </select>
+  <select id="femalesalute" name="femalesalute">
+  <option name="femalesalute" value="Miss">Miss</option>
+  <option name="femalesalute" value="Ms.">Ms.</option>
+  <option name="femalesalute" value="Mrs.">Mrs.</option>
+  <option name="femalesalute" value="Madame">Madame</option>
+  <option name="femalesalute" value="Majesty">Majesty</option>
+  <option name="femalesalute" value="Seniora">Seniora</option>
+  </select><br>
+  Birthday: <input type="date" name="bday"><br>
+  Username: <input type="text" name="username" maxlength="50"><br>
+  Password: <input type="password" name="pass" maxlength="50"><br>
+  About Me: <br><textarea name="me" rows="4" cols="50"></textarea><br>
+  <input type="submit">
+  </form>
+
+</div>
 </body>
 </html>

@@ -1,4 +1,12 @@
+body {
+  background-color: #000;
+}
+.container {
+  color: #FFF;
+  text-align: center;
+  margin: auto 0;
+}
+
 input {
-  padding: 25px;
-  margin: 20px;
+  margin: 10px;
 }

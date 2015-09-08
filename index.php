@@ -3,13 +3,16 @@
   <head>
     <title>Login</title>
   </head>
-  <link rel="stylesheet" type="text/css" href="/css/main.css" charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/main.css" charset="utf-8">
   <body>
-    <form method="post" action="logged.php">
-      Username: <input type="text" name="username"><br>
-      Password: <input type="password" name="pass"><br>
-      <input type="submit">
-    </form>
-    <a href="register.html">Register</a>
+    <div class="container">
+      <form method="post" action="logged.php">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="pass"><br>
+        <span><a href="register.html">Register</a></span><input type="submit">
+      </form>
+
+    </div>
+
   </body>
 </html>
