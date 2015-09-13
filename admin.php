@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['myusername'])){ //if login in session is not set
+    header("Location:index.php");
+	}
+?>
 <html>
 <head>
 <title>Register</title>
@@ -17,7 +23,8 @@ document.getElementById("femalesalute").disabled = false
 setInterval("checkFields()",0);
 </script>
 <form action="adminsubmit.php" method="post">
-Name: <input type="text" name="fullname"><br>
+First Name: <input type="text" name="first_name"><br>
+Last Name: <input type="text" name="last_name"><br>
 Gender: <input type="radio" name="sex" id="m" value="1">Male
 <input type="radio" name="sex" id="f" value="0">Female<br>
 Salutation: <select id="mensalute" name="malesalute">
