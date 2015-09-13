@@ -10,22 +10,23 @@
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
-   $_SESSION['myusername'] = $row[5];
-   echo "Full name: " . $row[1] . "<br>";
-   if ($row[2] == 1) {
-    echo "Gender: Male<br>";
-   } else {
-    echo "Gender: Female<br>";
-   }
-   echo "Salutation: " . $row[3] . "<br>";
-   echo "Birthday: " . $row[4] . "<br>";
-   echo "Username: " . $row[5] . "<br>";
-   echo "About: " . $row[7];
-   if ($row[8] == 1) {
-    echo "<br><a href=admin.html>Admin User Registration Page</a>";
-   }
+   $_SESSION['myusername'] = $row[6];
+    echo "First name: " . $row[1] . "<br>";
+	echo "Last name: " . $row[2] . "<br>";
+	if ($row[3] == 1) {
+	 echo "Gender: Male<br>";
+	} else {
+	 echo "Gender: Female<br>";
+	}
+	echo "Salutation: " . $row[4] . "<br>";
+	echo "Birthday: " . $row[5] . "<br>";
+	echo "Username: " . $row[6] . "<br>";
+	echo "About: " . $row[8];
+	if ($row[9] == 1) {
+	 echo "<br><a href=admin.html>Admin User Registration Page</a>";
+	}
   } else {
-   echo "No account with username/password combination found.";
+	header("location:index.php?message=Wrong Email or Password");
   }
   mysql_close();
 ?>
