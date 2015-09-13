@@ -46,6 +46,7 @@ echo "About: " . $row[8];
 if ($row[9] == 1) {
  echo "<br><a href=admin.php>Admin User Registration Page</a>";
 }
+echo "<br><a href=logout.php>Log Out</a>";
 mysql_close();
 
 ?>
