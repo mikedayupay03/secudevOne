@@ -44,7 +44,7 @@ echo "Birthday: " . $row[5] . "<br>";
 echo "Username: " . $row[6] . "<br>";
 echo "About: " . $row[8];
 if ($row[9] == 1) {
- echo "<br><a href=admin.html>Admin User Registration Page</a>";
+ echo "<br><a href=admin.php>Admin User Registration Page</a>";
 }
 mysql_close();
 

@@ -23,7 +23,7 @@
 	echo "Username: " . $row[6] . "<br>";
 	echo "About: " . $row[8];
 	if ($row[9] == 1) {
-	 echo "<br><a href=admin.html>Admin User Registration Page</a>";
+	 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 	}
   } else {
 	header("location:index.php?message=Wrong Email or Password");
