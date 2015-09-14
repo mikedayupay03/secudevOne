@@ -26,20 +26,24 @@
 		<script src="js/jquery.min.js"></script>
 		<script>
 			jQuery(function($) {
-				$('input#m').change(function(){
-					var val = $('input#m:checked').val();
+				// $('.0').hide();
+				$('input:radio').change(function(){
+					var val = $('input:radio:checked').val();
 					$('#Select1').val(0);
-					$('#mr').attr("selected", "true");
 					$('.0, .1').hide();
 					$('.' + val).show();
 				});
 
-				$('input#f').change(function(){
-					var val = $('input#f:checked').val();
-					$('#Select1').val(0);
-					$('#ms').attr("selected", "true");
-					$('.0, .1').hide();
-					$('.' + val).show();
+				$('input:radio').change(function(){
+					var val = $('input#m:checked').val();
+					var val1 = $('input#f:checked').val();
+					if(val){
+						$('#Select1').val(0);
+						$('#mr').attr("selected", "true");
+					}else if(val1) {
+						$('#Select1').val(0);
+						$('#ms').attr("selected", "true");
+					}
 				});
 
 			});
@@ -104,7 +108,7 @@
 					  <option name="femalesalute" value="Seniora">Seniora</option>
 					</select><br><br>-->
 
-					<input id="m" name="sex" type="radio" value="1" checked="checked"/>Male<br />
+					<input id="m" name="sex" type="radio" value="1"/>Male<br />
 					<input id="f" name="sex" type="radio" value="0" />Female<br />
 
 					<select id="Select1" name="Select1">
