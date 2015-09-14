@@ -29,24 +29,6 @@ if (!preg_match("/^[a-zA-Z\s]+$/",$_POST["first_name"])) {
  mysql_query($strSQL);
 }
 
-$strSQL = "SELECT * FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
-$rs = mysql_query($strSQL);
-$row = mysql_fetch_array($rs);
-echo "First name: " . $row[1] . "<br>";
-echo "Last name: " . $row[2] . "<br>";
-if ($row[3] == 1) {
- echo "Gender: Male<br>";
-} else {
- echo "Gender: Female<br>";
-}
-echo "Salutation: " . $row[4] . "<br>";
-echo "Birthday: " . $row[5] . "<br>";
-echo "Username: " . $row[6] . "<br>";
-echo "About: " . $row[8];
-if ($row[9] == 1) {
- echo "<br><a href=admin.php>Admin User Registration Page</a>";
-}
-echo "<br><a href=logout.php>Log Out</a>";
-mysql_close();
+header("location:index.php?msg=success");
 
 ?>

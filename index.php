@@ -1,3 +1,11 @@
+<?php
+	if(isset($_GET['msg'])){	
+		$msg = $_GET['msg'];
+		if ($msg ==  "success"){
+			?> <script> alert("Registration Successful!"); </script> <?php
+		}
+	}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

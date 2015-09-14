@@ -1,4 +1,12 @@
 <?php
+
+	error_reporting(0);
+	session_start();
+	if(!isset($_SESSION['myusername'])){ //if login in session is not set
+    header("Location:index.php");
+	$myusername = $_SESSION['myusername'];
+	}
+
   mysql_connect("localhost","root","1234") or die (mysql_error());
   mysql_select_db("secudev1") or die (mysql_error());
   $strSQL = "SELECT COUNT(*) FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
