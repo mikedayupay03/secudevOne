@@ -29,7 +29,7 @@
 
 		<div class="container">
 			<div class="content">
-				<form action="logged.php" method="post">
+				<form action="checklogin.php" method="post">
 					<center><h2>Sign In</h2></center>
 					<hr>
 					Username: <input type="text" name="username" placeholder="Username" id="username"/>

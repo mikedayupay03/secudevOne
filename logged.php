@@ -6,16 +6,10 @@
     header("Location:index.php");
 	$myusername = $_SESSION['myusername'];
 	}
-
-  mysql_connect("localhost","root","1234") or die (mysql_error());
-  mysql_select_db("secudev1") or die (mysql_error());
-  $strSQL = "SELECT COUNT(*) FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
-  $rs = mysql_query($strSQL);
-  $row = mysql_fetch_array($rs);
-  $count = $row[0];
-  if ($count == 1) {
-   session_start();
-   $strSQL = "SELECT * FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
+	mysql_connect("localhost","root","1234") or die (mysql_error());
+	mysql_select_db("secudev1") or die (mysql_error());
+	$myusername = $_SESSION['myusername'];
+   $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
    $_SESSION['myusername'] = $row[6];
@@ -34,8 +28,6 @@
 	 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 	}
 	echo "<br><a href=logout.php>Log Out</a>";
-  } else {
-	header("location:index.php?message=Wrong Email or Password");
-  }
+  
   mysql_close();
 ?>
