@@ -23,7 +23,19 @@
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/signup-in-style.css">
 		
+		<script src="js/jquery.min.js"></script>
 		<script>
+			jQuery(function($) {
+				$('input:radio').change(function(){
+					var val = $('input:radio:checked').val();
+					$('#Select1').val(0)
+					$('.0, .1').hide();
+					$('.' + val).show();
+				});
+			});
+		</script>
+		
+		<!--<script>
 		function checkFields() {
 			document.getElementById("mensalute").disabled = true
 			document.getElementById("femalesalute").disabled = true
@@ -35,7 +47,7 @@
 			}
 		}
 		setInterval("checkFields()",0);
-		</script>
+		</script>-->
 	</head>
 	<body>
 
@@ -56,15 +68,16 @@
 					Last Name: <input type="text" name="last_name" size="50" maxlength="50" value="">
 					<br><br>
 					
-					Gender:    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="sex" id="m" value="1">Male
+					
+					<!-- Gender:    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!--<input type="radio" name="sex" id="m" value="1">Male-->
+					<!--	<input id="m" name="sex" type="radio" value="1">Male
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="sex" id="f" value="0">Female<br><br>
-						
+						<input id="f" name="sex" type="radio" value="0">Female<br><br>
 					Salutation:
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					
-					<select id="mensalute" name="malesalute">
+					<!--<select id="mensalute" name="malesalute">
 					  <option name="malesalute" value="Mr.">Mr.</option>
 					  <option name="malesalute" value="Sir">Sir</option>
 					  <option name="malesalute" value="Senior">Senior</option>
@@ -77,6 +90,28 @@
 					  <option name="femalesalute" value="Madame">Madame</option>
 					  <option name="femalesalute" value="Majesty">Majesty</option>
 					  <option name="femalesalute" value="Seniora">Seniora</option>
+					</select><br><br>-->
+					
+					<input id="m" name="sex" type="radio" value="1" checked="checked"/>Male<br />
+					<input id="f" name="sex" type="radio" value="0" />Female<br />
+					
+					<select id="Select1" name="Select1">
+						<option name="malesalute" value="Mr." class="1">Mr.</option>
+						<option name="malesalute" value="Sir" class="1">Sir</option>
+						<option name="malesalute" value="Senior" class="1">Senior</option>
+						<option name="malesalute" value="Count" class="1">Count</option>
+						<option name="femalesalute" value="Miss" class="0">Miss</option>
+						<option name="femalesalute" value="Ms." class="0">Ms.</option>
+						<option name="femalesalute" value="Mrs." class="0">Mrs.</option>
+						<option name="femalesalute" value="Madame" class="0">Madame</option>
+						<option name="femalesalute" value="Majesty" class="0">Majesty</option>
+						<option name="femalesalute" value="Seniora" class="0">Seniora</option>
+						<!--<option value="HO-House 1" class="house">House 1</option>
+						<option value="HO-House 2" class="house">House 2</option>
+						<option value="HO-House 3" class="house">House 3</option>
+						<option value="CO-Condo 1" class="condo">Condo 1</option>
+						<option value="CO-Condo 2" class="condo">Condo 2</option>
+						<option value="CO-Condo 3" class="condo">Condo 3</option>-->
 					</select><br><br>
 							  
 					Username: <input type="text" name="username" size="30" value="">
