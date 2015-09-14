@@ -1,5 +1,5 @@
 <?php
-	if(isset($_GET['msg'])){	
+	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "fail"){
 			?> <script> alert("Please fill up all fields! Special Characters are not allowed."); </script> <?php
@@ -19,22 +19,34 @@
 		<title>Register</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/bootstrap.min.css">		
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/signup-in-style.css">
-		
+
 		<script src="js/jquery.min.js"></script>
 		<script>
 			jQuery(function($) {
-				$('input:radio').change(function(){
-					var val = $('input:radio:checked').val();
-					$('#Select1').val(0)
+				$('input#m').change(function(){
+					var val = $('input#m:checked').val();
+					$('#Select1').val(0);
+					$('#mr').attr("selected", "true");
 					$('.0, .1').hide();
 					$('.' + val).show();
 				});
+
+				$('input#f').change(function(){
+					var val = $('input#f:checked').val();
+					$('#Select1').val(0);
+					$('#ms').attr("selected", "true");
+					$('.0, .1').hide();
+					$('.' + val).show();
+				});
+
 			});
+
+
 		</script>
-		
+
 		<!--<script>
 		function checkFields() {
 			document.getElementById("mensalute").disabled = true
@@ -67,16 +79,16 @@
 					<br><br>
 					Last Name: <input type="text" name="last_name" size="50" maxlength="50" value="">
 					<br><br>
-					
-					
+
+
 					<!-- Gender:    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<!--<input type="radio" name="sex" id="m" value="1">Male-->
 					<!--	<input id="m" name="sex" type="radio" value="1">Male
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input id="f" name="sex" type="radio" value="0">Female<br><br>
 					Salutation:
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 					<!--<select id="mensalute" name="malesalute">
 					  <option name="malesalute" value="Mr.">Mr.</option>
 					  <option name="malesalute" value="Sir">Sir</option>
@@ -91,17 +103,17 @@
 					  <option name="femalesalute" value="Majesty">Majesty</option>
 					  <option name="femalesalute" value="Seniora">Seniora</option>
 					</select><br><br>-->
-					
+
 					<input id="m" name="sex" type="radio" value="1" checked="checked"/>Male<br />
 					<input id="f" name="sex" type="radio" value="0" />Female<br />
-					
+
 					<select id="Select1" name="Select1">
-						<option name="malesalute" value="Mr." class="1">Mr.</option>
+						<option name="malesalute" value="Mr." class="1" id="mr">Mr.</option>
 						<option name="malesalute" value="Sir" class="1">Sir</option>
 						<option name="malesalute" value="Senior" class="1">Senior</option>
 						<option name="malesalute" value="Count" class="1">Count</option>
 						<option name="femalesalute" value="Miss" class="0">Miss</option>
-						<option name="femalesalute" value="Ms." class="0">Ms.</option>
+						<option name="femalesalute" value="Ms." class="0" id="ms">Ms.</option>
 						<option name="femalesalute" value="Mrs." class="0">Mrs.</option>
 						<option name="femalesalute" value="Madame" class="0">Madame</option>
 						<option name="femalesalute" value="Majesty" class="0">Majesty</option>
@@ -113,24 +125,24 @@
 						<option value="CO-Condo 2" class="condo">Condo 2</option>
 						<option value="CO-Condo 3" class="condo">Condo 3</option>-->
 					</select><br><br>
-							  
+
 					Username: <input type="text" name="username" size="30" value="">
 					<br><br>
 					Password: <input type="password" name="pass" size="20" value="">
 					<br><br>
-				
-				
+
+
 				<div id="bday-content">
 					Birthday: <input type="date" name="bday">
 				</div>
 				<br>
-				
+
 				About Me: <br><textarea name="me" rows="2" cols="50"></textarea><br><br>
-					
+
 				<input class="btn-danger" type="submit" name="submit" value="Sign up">
 				</form>
 			</div>
 		</div><!-- container -->
-	
+
 	</body>
 </html>
