@@ -2,6 +2,18 @@
 	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
     header("Location:index.php");
+	} else{
+		$myusername = $_SESSION['myusername'];
+		$admin = 0;
+		mysql_connect("localhost","root","1234") or die (mysql_error());
+		mysql_select_db("secudev1") or die (mysql_error());
+		$result = mysql_query("SELECT admin FROM userdb WHERE username like '$myusername'");
+		while ($row = mysql_fetch_assoc($result)) {
+			$admin = $admin + $row['admin'];
+			if ($admin == 0){
+				header("Location:index.php");
+			}
+		}
 	}
 ?>
 <html>
