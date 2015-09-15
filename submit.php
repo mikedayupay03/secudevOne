@@ -1,6 +1,9 @@
 <?php
 mysql_connect("localhost","root","1234") or die (mysql_error());
 mysql_select_db("secudev1") or die (mysql_error());
+$sql1 = "SELECT * FROM salutations";
+$rs1 = mysql_query($sql1);
+$salutations = mysql_fetch_array($rs1);
 $strSQL = "SELECT COUNT(*) FROM userdb WHERE username = '" . $_POST["username"] . "' AND password = '" . $_POST["pass"] . "'";
 $rs = mysql_query($strSQL);
 $row = mysql_fetch_array($rs);
