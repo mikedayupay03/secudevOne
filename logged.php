@@ -4,7 +4,6 @@
 	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
     header("Location:index.php");
-	$myusername = $_SESSION['myusername'];
 	}
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
@@ -12,7 +11,6 @@
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
-   $_SESSION['myusername'] = $row[6];
     echo "First name: " . $row[1] . "<br>";
 	echo "Last name: " . $row[2] . "<br>";
 	if ($row[3] == 1) {

@@ -2,7 +2,7 @@
 	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "fail"){
-			?> <script> alert("Please fill up all fields! Special Characters are not allowed."); </script> <?php
+			?> <script> alert("Please fill up all fields!"); </script> <?php
 		} else if ($msg ==  "special"){
 			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
 		} else if ($msg ==  "bday"){
