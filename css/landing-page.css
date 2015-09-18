@@ -1,0 +1,33 @@
+header {
+  height: 20%;
+  background-color: #0a9c2a;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.container {
+  height: 30%;
+  width: 48%;
+  padding: 10px;
+  border-style: solid;
+  border-color: #000;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.post_message {
+  height: 30%;
+  width: 48%;
+  padding: 10px;
+  border-style: solid;
+  border-color: #000;
+  margin-bottom: 20px;
+  float: right;
+}
+
+.message_board {
+  height: 50%;
+  border-style: solid;
+  border-color: #000;
+  clear: both;
+}
