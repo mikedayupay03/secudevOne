@@ -12,11 +12,9 @@
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
-
 	 $queryMessage = "SELECT * FROM message_board ORDER BY date_posted DESC LIMIT 10";
 	 $queryMessageResults = mysql_query($queryMessage);
 	 $messages = mysql_fetch_array($queryMessageResults);
-
 ?>
 
 <html>
