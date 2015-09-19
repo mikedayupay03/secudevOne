@@ -9,6 +9,7 @@ header {
   height: 30%;
   width: 48%;
   padding: 10px;
+  padding-bottom: 19px;
   border-style: solid;
   border-color: #000;
   margin-bottom: 20px;
@@ -30,4 +31,5 @@ header {
   border-style: solid;
   border-color: #000;
   clear: both;
+  padding: 10px;
 }

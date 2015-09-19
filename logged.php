@@ -45,7 +45,7 @@
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
-			echo "<br><a href=logout.php>Log Out</a>";
+			echo "<br><br><a href=logout.php>Log Out</a>";
 			?>
 
 		</div>
@@ -53,8 +53,9 @@
 		<div class="post_message">
 			<h3>Post on the Message Board</h3>
 
-			<textarea name="message" rows="10" cols="50" form="msgform" placeholder="Enter text here" ></textarea>
-			<form class="message_box" action="" method="post" id="msgform">
+
+			<form class="message_box" action="postmessage.php" method="post" id="msgform">
+				<textarea name="message" rows="10" cols="50" placeholder="Enter message here" ></textarea><br>
 				<input type="submit">
 			</form>
 		</div>
