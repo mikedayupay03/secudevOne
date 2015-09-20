@@ -9,6 +9,8 @@
 			?> <script> alert("Invalid Date!"); </script> <?php
 		} else if ($msg ==  "user"){
 			?> <script> alert("Username already taken!"); </script> <?php
+		} else if ($msg ==  "salute"){
+			?> <script> alert("Invalid Salutation!"); </script> <?php
 		}
 	}
 ?>
@@ -24,13 +26,14 @@
 		<link rel="stylesheet" href="css/signup-in-style.css">
 
 		<script src="js/jquery.min.js"></script>
+		<script src="js/gen_validatorv4.js" type="text/javascript"></script>
 		<script>
 			jQuery(function($) {
 				// $('.0').hide();
 				$('input:radio').change(function(){
 					var val = $('input:radio:checked').val();
 					$('#Select1').val(0);
-					$('.0, .1').hide();
+					$('.2, .1').hide();
 					$('.' + val).show();
 				});
 
@@ -38,10 +41,10 @@
 					var val = $('input#m:checked').val();
 					var val1 = $('input#f:checked').val();
 					if(val){
-						$('#Select1').val(0);
+						$('#Select1').val('Mr.');
 						$('#mr').attr("selected", "true");
 					}else if(val1) {
-						$('#Select1').val(0);
+						$('#Select1').val('Ms.');
 						$('#ms').attr("selected", "true");
 					}
 				});
@@ -76,7 +79,7 @@
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form action="submit.php" method="post">
+				<form id="form1" action="submit.php" method="post">
 					<h2>Sign Up</h2>
 					<hr>
 					First Name: <input type="text" name="first_name" size="50" maxlength="50" value="">
@@ -109,19 +112,18 @@
 					</select><br><br>-->
 
 					<input id="m" name="sex" type="radio" value="1"/>Male<br />
-					<input id="f" name="sex" type="radio" value="0" />Female<br />
+					<input id="f" name="sex" type="radio" value="2" />Female<br />
 
 					<select id="Select1" name="Select1">
 						<option name="malesalute" value="Mr." class="1" id="mr">Mr.</option>
 						<option name="malesalute" value="Sir" class="1">Sir</option>
 						<option name="malesalute" value="Senior" class="1">Senior</option>
 						<option name="malesalute" value="Count" class="1">Count</option>
-						<option name="femalesalute" value="Miss" class="0">Miss</option>
-						<option name="femalesalute" value="Ms." class="0" id="ms">Ms.</option>
-						<option name="femalesalute" value="Mrs." class="0">Mrs.</option>
-						<option name="femalesalute" value="Madame" class="0">Madame</option>
-						<option name="femalesalute" value="Majesty" class="0">Majesty</option>
-						<option name="femalesalute" value="Seniora" class="0">Seniora</option>
+						<option name="femalesalute" value="Ms." class="2" id="ms">Ms.</option>
+						<option name="femalesalute" value="Mrs." class="2">Mrs.</option>
+						<option name="femalesalute" value="Madame" class="2">Madame</option>
+						<option name="femalesalute" value="Majesty" class="2">Majesty</option>
+						<option name="femalesalute" value="Seniora" class="2">Seniora</option>
 						<!--<option value="HO-House 1" class="house">House 1</option>
 						<option value="HO-House 2" class="house">House 2</option>
 						<option value="HO-House 3" class="house">House 3</option>
@@ -147,6 +149,28 @@
 				</form>
 			</div>
 		</div><!-- container -->
-
+	
+		<script type="text/javascript">
+		 var frmvalidator = new Validator("form1");
+		 frmvalidator.addValidation("first_name","req","Please enter your first name");
+		 frmvalidator.addValidation("first_name","maxlen=50","Max length for first name is 50");
+		 frmvalidator.addValidation("first_name","alnum_s","Special Characters are not allowed");
+		 
+		 frmvalidator.addValidation("last_name","req","Please enter your last name");
+		 frmvalidator.addValidation("last_name","maxlen=50","Max length for last name is 50");
+		 frmvalidator.addValidation("last_name","alnum_s","Special Characters are not allowed");
+		 
+		 frmvalidator.addValidation("sex","selone_radio","Please select your gender");
+		 
+		 frmvalidator.addValidation("username","req","Please enter a username");
+		 frmvalidator.addValidation("username","alnum","Special characters are not allowed");
+		 frmvalidator.addValidation("username","maxlen=50","Max length for username is 50");
+		 
+		 frmvalidator.addValidation("pass","req","Please enter a password");
+		 frmvalidator.addValidation("pass","alnum","Special characters are not allowed");
+		 frmvalidator.addValidation("pass","maxlen=50","Max length for username is 50");
+		 
+		 frmvalidator.addValidation("me","req","Please enter something about you");
+		</script>
 	</body>
 </html>
