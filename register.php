@@ -30,6 +30,7 @@
 		<script>
 			jQuery(function($) {
 				// $('.0').hide();
+				document.getElementById("Select1").disabled = true
 				$('input:radio').change(function(){
 					var val = $('input:radio:checked').val();
 					$('#Select1').val(0);
@@ -41,9 +42,11 @@
 					var val = $('input#m:checked').val();
 					var val1 = $('input#f:checked').val();
 					if(val){
+						document.getElementById("Select1").disabled = false
 						$('#Select1').val('Mr.');
 						$('#mr').attr("selected", "true");
 					}else if(val1) {
+						document.getElementById("Select1").disabled = false
 						$('#Select1').val('Ms.');
 						$('#ms').attr("selected", "true");
 					}
