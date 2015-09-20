@@ -28,15 +28,19 @@ foreach($required as $field) {
 	    header("location:register.php?msg=fail");
 	} else if ($isSpecial){
 		header("location:register.php?msg=special");
-	}else if ($diff < 18) {
+	} else if (($_POST["sex"] == 1) && !($_POST["Select1"] == "Mr." || $_POST["Select1"] == "Sir" || $_POST["Select1"] == "Senior" || $_POST["Select1"] == "Count")) {
+		header("location:register.php?msg=salute");
+	} else if (($_POST["sex"] == 2) && !($_POST["Select1"] == "Ms." || $_POST["Select1"] == "Mrs." || $_POST["Select1"] == "Madame" || $_POST["Select1"] == "Majesty" || $_POST["Select1"] == "Seniora")) {
+		header("location:register.php?msg=salute");
+	} else if ($diff < 18) {
 		header("location:register.php?msg=bday");
-	}else if ($count == 1) {
+	} else if ($count == 1) {
 		header("location:register.php?msg=user");
 	} else {
-		 if ($_POST["sex"] == 1) {
-		  $strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . $_POST["sex"] . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0)";
-		 } else if ($_POST["sex"] == 0) {
-		  $strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . $_POST["sex"] . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0)";
+		 if ($_POST["sex"] == 1) {	
+				$strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . $_POST["sex"] . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0)";		
+		 } else if ($_POST["sex"] == 2) {
+				$strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . '0' . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0)";
 		 }
 		 mysql_query($strSQL);
 		 header("location:index.php?msg=success");

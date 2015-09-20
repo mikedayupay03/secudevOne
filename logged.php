@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
 	error_reporting(0);
@@ -11,21 +12,58 @@
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
-    echo "First name: " . $row[1] . "<br>";
-	echo "Last name: " . $row[2] . "<br>";
-	if ($row[3] == 1) {
-	 echo "Gender: Male<br>";
-	} else {
-	 echo "Gender: Female<br>";
-	}
-	echo "Salutation: " . $row[4] . "<br>";
-	echo "Birthday: " . $row[5] . "<br>";
-	echo "Username: " . $row[6] . "<br>";
-	echo "About: " . $row[8];
-	if ($row[9] == 1) {
-	 echo "<br><a href=admin.php>Admin User Registration Page</a>";
-	}
-	echo "<br><a href=logout.php>Log Out</a>";
-  
-  mysql_close();
+	 $queryMessage = "SELECT * FROM message_board ORDER BY date_posted DESC LIMIT 10";
+	 $queryMessageResults = mysql_query($queryMessage);
+	 $messages = mysql_fetch_array($queryMessageResults);
 ?>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SECUDEV: Landing Page</title>
+		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
+	</head>
+	<body>
+		<header>
+			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>!</h1>
+		</header>
+
+		<div class="container">
+			<h3>Personal Information</h3>
+			<hr />
+			<?php echo "First name: " . $row[1] . "<br>";
+			echo "Last name: " . $row[2] . "<br>";
+			if ($row[3] == 1) {
+			 echo "Gender: Male<br>";
+			} else {
+			 echo "Gender: Female<br>";
+			}
+			echo "Salutation: " . $row[4] . "<br>";
+			echo "Birthday: " . $row[5] . "<br>";
+			echo "Username: " . $row[6] . "<br>";
+			echo "About: " . $row[8];
+			if ($row[9] == 1) {
+			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
+			}
+			echo "<br><a href=editprofile.php>Edit profile</a><br><a href=logout.php>Log Out</a>";
+			?>
+
+		</div>
+
+		<div class="post_message">
+			<h3>Post on the Message Board</h3>
+
+
+			<form class="message_box" action="postmessage.php" method="post" id="msgform">
+				<textarea name="message" rows="10" cols="50" placeholder="Enter message here" ></textarea><br>
+				<input type="submit">
+			</form>
+		</div>
+
+		<div class="message_board">
+			<h3>Message Board</h3>
+
+		</div>
+		<?php mysql_close(); ?>
+	</body>
+</html>
