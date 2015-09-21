@@ -64,7 +64,6 @@
 
 		<div class="container">
 			<h3>Personal Information</h3>
-			<a href="editprofile.php">Edit Profile</a>
 			<hr />
 			<?php echo "First name: " . $row[1] . "<br>";
 			echo "Last name: " . $row[2] . "<br>";

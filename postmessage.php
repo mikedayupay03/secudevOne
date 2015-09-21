@@ -21,6 +21,6 @@
 
 
   mysql_close();
-  //header("location:logged.php");
+  header("location:logged.php");
 
  ?>
