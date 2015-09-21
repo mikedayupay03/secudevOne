@@ -90,7 +90,7 @@
 
 
 			<form class="message_box" action="postmessage.php" method="post" id="msgform">
-				<textarea name="message" rows="10" cols="50" placeholder="Enter message here" ></textarea><br>
+				<textarea name="message" rows="10" cols="50" placeholder="Enter message here" ></textarea><br><br>
 				<input type="submit">
 			</form>
 		</div>
