@@ -12,9 +12,7 @@
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
-	 $queryMessage = "SELECT * FROM message_board ORDER BY date_posted DESC LIMIT 10";
-	 $queryMessageResults = mysql_query($queryMessage);
-	 $messages = mysql_fetch_array($queryMessageResults);
+
 ?>
 
 <html>
@@ -22,6 +20,42 @@
 		<meta charset="utf-8">
 		<title>SECUDEV: Landing Page</title>
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript">
+
+		$(document).ready(function(){
+			loadstation();
+		});
+
+		function loadstation(){
+			$.ajax({
+				url: "getmessages.php",
+				type: "GET",
+				success: function(response) {
+					$("#message_container").html(response);
+					setTimeout(loadstation,5000);
+				}
+			});
+		}
+			// function loadMessages() {
+			// 	var xmlhttp;
+			// 	if(window.XMLHttpRequest) {
+			// 		xmlhttp = new XMLHttpRequest();
+			// 	} else {
+			// 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			// 	}
+			//
+			// 	xmlhttp.onreadystatechange = function () {
+			// 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			// 			document.getElementById("message_container").innerHTML = xmlhttp.responseText;
+			// 		}
+			// 	}
+			//
+			// 	xmlhttp.open("GET", "getMessages.php", true);
+			// 	xmlhttp.send();
+			// }
+
+		</script>
 	</head>
 	<body>
 		<header>
@@ -30,6 +64,7 @@
 
 		<div class="container">
 			<h3>Personal Information</h3>
+			<a href="editprofile.php">Edit Profile</a>
 			<hr />
 			<?php echo "First name: " . $row[1] . "<br>";
 			echo "Last name: " . $row[2] . "<br>";
@@ -62,7 +97,9 @@
 
 		<div class="message_board">
 			<h3>Message Board</h3>
+			<div id="message_container">
 
+			</div>
 		</div>
 		<?php mysql_close(); ?>
 	</body>
