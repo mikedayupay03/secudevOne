@@ -79,7 +79,7 @@
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
-			echo "<br><a href=editprofile.php>Edit profile</a><br><a href=logout.php>Log Out</a>";
+			echo "<br><a href=logout.php>Log Out</a>";
 			?>
 
 		</div>
