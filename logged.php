@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <?php
-
+	if(isset($_GET['msg'])){	
+		$msg = $_GET['msg'];
+		if ($msg ==  "success"){
+			?> <script> alert("Profile edited successfully!"); </script> <?php
+		}
+	}
+	
 	error_reporting(0);
 	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
