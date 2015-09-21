@@ -64,6 +64,7 @@
 
 		<div class="container">
 			<h3>Personal Information</h3>
+			<a href="editprofile.php">Edit Profile</a>
 			<hr />
 			<?php echo "First name: " . $row[1] . "<br>";
 			echo "Last name: " . $row[2] . "<br>";
@@ -79,7 +80,7 @@
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
-			echo "<br><a href=logout.php>Log Out</a>";
+			echo "<br><a href=editprofile.php>Edit profile</a><br><a href=logout.php>Log Out</a>";
 			?>
 
 		</div>
