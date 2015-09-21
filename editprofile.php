@@ -1,19 +1,15 @@
-<?php
-	if(isset($_GET['msg'])){
-		$msg = $_GET['msg'];
-		if ($msg ==  "fail"){
-			?> <script> alert("Please fill up all fields! Special Characters are not allowed."); </script> <?php
-		} else if ($msg ==  "special"){
-			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
-		} else if ($msg ==  "bday"){
-			?> <script> alert("Invalid Date!"); </script> <?php
-		} else if ($msg ==  "user"){
-			?> <script> alert("Username already taken!"); </script> <?php
-		}
-	}
-?>
-
 <!DOCTYPE html>
+<?php
+
+	error_reporting(0);
+	session_start();
+	if(!isset($_SESSION['myusername'])){ //if login in session is not set
+    header("Location:index.php");
+	}
+	mysql_connect("localhost","root","1234") or die (mysql_error());
+	mysql_select_db("secudev1") or die (mysql_error());
+	$myusername = $_SESSION['myusername'];
+?>
 <html lang="en">
 	<head>
 		<title>Profile Settings</title>
@@ -57,13 +53,13 @@
 		<nav class="navbar navbar-static-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a href="" class="navbar-brand"><!--<img src="assets/images/TRACKME LOGO2.png" alt="Logo" class="logo">--></a>
+					<a href="" class="navbar-brand"></a>
 				</div>
 			</div>
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form action="#" method="post">
+				<form action="saveprofile.php" method="post">
 					<h2>Basic Information</h2>
 					<hr>
 					First Name: <input type="text" name="first_name" size="50" maxlength="50" value="">
@@ -71,10 +67,10 @@
 					Last Name: <input type="text" name="last_name" size="50" maxlength="50" value="">
 					<br><br>
 
-					<input id="m" name="sex" type="radio" value="1"/>Male<br />
-					<input id="f" name="sex" type="radio" value="0" />Female<br /><br />
+					<input id="m" name="male" type="radio" value="1"/>Male<br />
+					<input id="f" name="male" type="radio" value="0" />Female<br /><br />
 
-					<select id="Select1" name="Select1">
+					<select id="Select1" name="salutation">
 						<option name="malesalute" value="Mr." class="1" id="mr">Mr.</option>
 						<option name="malesalute" value="Sir" class="1">Sir</option>
 						<option name="malesalute" value="Senior" class="1">Senior</option>
@@ -86,18 +82,20 @@
 						<option name="femalesalute" value="Majesty" class="0">Majesty</option>
 						<option name="femalesalute" value="Seniora" class="0">Seniora</option>
 					</select><br><br>
-					
+				
+				Password: <input type="password" name="password" size="20" value=""><br><br>
+				
 				<div id="bday-content">
 					Birthday: <input type="date" name="bday">
 				</div>
 				<br>
 
-				About Me: <br><textarea name="me" rows="2" cols="50"></textarea>
+				About Me: <br><textarea name="about" rows="2" cols="50"></textarea>
 
 				<input class="btn-danger" type="submit" name="submit" value="Save Changes">
 				</form>
 			</div>
-		</div><!-- container -->
+		</div>
 
 	</body>
 </html>
