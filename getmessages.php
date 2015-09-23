@@ -23,9 +23,10 @@
   //   echo mysql_error();
   // }
 
+	echo "<table border = '1' col = >";
+  do {
 
-  echo "<table border = '1'>";
-  while ($messages = mysql_fetch_row($rs)) {
+
     echo "<tr>
     <td>";
 
@@ -48,7 +49,7 @@
 	  echo "</td>";
     echo "</tr>";
 
-  }
+  } while ($messages = mysql_fetch_row($rs));
   echo "</table>";
 
 
