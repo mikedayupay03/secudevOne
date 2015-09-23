@@ -25,7 +25,7 @@
 
 
   echo "<table>";
-  while ($messages = mysql_fetch_row($rs)) {
+  do {
     echo "<tr>
     <td>";
 
@@ -48,7 +48,7 @@
 	echo "</td>";
     echo "</tr>";
 
-  }
+  } while ($messages = mysql_fetch_row($rs));
   echo "</table>";
 
 
