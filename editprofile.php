@@ -156,6 +156,10 @@
 				About Me: <br><textarea name="me" rows="2" cols="50"></textarea><br><br>
 
 				<input class="btn-danger" type="submit" name="submit" value="Save Changes">
+				<br>
+				<a href="logged.php">
+						<button class="btn-danger" type="button" style="position: relative; top: 5px; width: 365px; height: 40px;" onclick="return confirm('Are you sure you want to discard changes?');">Discard Changes</button>
+				</a>
 				</form>
 			</div>
 		</div><!-- container -->
