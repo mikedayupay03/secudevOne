@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
-	if(isset($_GET['msg'])){	
+	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "success"){
 			?> <script> alert("Profile edited successfully!"); </script> <?php
 		}
 	}
-	
+
 	error_reporting(0);
 	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
@@ -14,13 +14,13 @@
 	}
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
-	
+
 	//This code block is for deleting messages
 	if(isset($_GET['message_id'])){
 		$messageId = $_GET['message_id'];
         $query="DELETE FROM message_board WHERE message_id like '$messageId'";$result=mysql_query($query);
 	}
-	
+
 	$myusername = $_SESSION['myusername'];
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
@@ -93,7 +93,7 @@
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
-			echo "<br><a href=logout.php>Log Out</a>";
+			echo "<br><br><a href=logout.php>Log Out</a>";
 			?>
 
 		</div>
@@ -110,6 +110,7 @@
 
 		<div class="message_board">
 			<h3>Message Board</h3>
+			<hr>
 			<div id="message_container">
 
 			</div>
