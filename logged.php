@@ -18,7 +18,8 @@
 	//This code block is for deleting messages
 	if(isset($_GET['message_id'])){
 		$messageId = $_GET['message_id'];
-        $query="DELETE FROM message_board WHERE message_id like '$messageId'";$result=mysql_query($query);
+    $query="DELETE FROM message_board WHERE message_id like '$messageId'";
+		$result=mysql_query($query);
 	}
 
 	$myusername = $_SESSION['myusername'];
