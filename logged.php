@@ -14,6 +14,13 @@
 	}
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
+	
+	//This code block is for deleting messages
+	if(isset($_GET['message_id'])){
+		$messageId = $_GET['message_id'];
+        $query="DELETE FROM message_board WHERE message_id like '$messageId'";$result=mysql_query($query);
+	}
+	
 	$myusername = $_SESSION['myusername'];
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
