@@ -22,6 +22,28 @@
 			?> <script> alert("Invalid Salutation!"); </script> <?php
 		}
 	}
+    
+    
+    $myusername = $_SESSION['myusername'];
+    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
+    $rs = mysql_query($strSQL);
+    
+    
+    if (mysql_num_rows($rs) > 0){
+        $row = mysql_fetch_array($rs);
+
+        $username = $row["username"];
+        $salutation = $row["salutation"];
+        $lname = $row["last_name"];
+        $fname = $row["first_name"];
+        $gender = $row["male"];
+        $birthdate = $row["bday"];
+        $month = date("m", strtotime($bday));
+        $day = date("d", strtotime($bday));
+        $year = date("Y", strtotime($bday));
+        $about = $row["about"];
+        $admin = $row["admin"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -94,9 +116,9 @@
 				<form id="form1" action="saveprofile.php" method="post">
 					<h2>Basic Information</h2>
 					<hr>
-					First Name: <input type="text" name="first_name" size="50" maxlength="50" value="">
+					First Name: <input type="text" name="first_name" size="50" maxlength="50" value="<?php echo $fname;?>">
 					<br><br>
-					Last Name: <input type="text" name="last_name" size="50" maxlength="50" value="">
+					Last Name: <input type="text" name="last_name" size="50" maxlength="50" value="<?php echo $lname;?>">
 					<br><br>
 
 
@@ -123,7 +145,7 @@
 					  <option name="femalesalute" value="Seniora">Seniora</option>
 					</select><br><br>-->
 
-					<input id="m" name="sex" type="radio" value="1"/>Male<br />
+					<input id="m" name="sex" type="radio" value="1" />Male<br />
 					<input id="f" name="sex" type="radio" value="2" />Female<br />
 
 					<select id="Select1" name="Select1">
@@ -149,11 +171,11 @@
 
 
 				<div id="bday-content">
-					Birthday: <input type="date" name="bday">
+					Birthday: <input type="date" name="bday" value="<?php echo $birthdate;?>">
 				</div>
 				<br>
 
-				About Me: <br><textarea name="me" rows="2" cols="50"></textarea><br><br>
+				About Me: <br><textarea name="me" rows="2" cols="50"><?php echo $about;?></textarea><br><br>
 
 				<input class="btn-danger" type="submit" name="submit" value="Save Changes">
 				<br>

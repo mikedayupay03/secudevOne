@@ -18,9 +18,19 @@
 	$myusername = $_SESSION['myusername'];
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
-   $row = mysql_fetch_array($rs);
 
-	$message_id = $_GET['message_id'];
+	
+    if (mysql_num_rows($rs) > 0){
+        $row = mysql_fetch_array($rs);
+        
+        $message_id = $_GET['message_id'];
+        $about = $row["about"];
+    }
+    
+    $q = "SELECT message FROM message_board WHERE message_id =" . $message_id;
+    $rs2 = mysql_query($q);
+    $row2 = mysql_fetch_array($rs2);
+    $message = $row2['message'];
 ?>
 
 <html>
@@ -37,7 +47,7 @@
 
 
 			<form class="message_box" action="posteditedmessage.php" method="post" id="msgform">
-				<textarea name="message" rows="10" cols="50" placeholder="Enter message here" ></textarea><br><br>
+				<textarea name="message" rows="10" cols="50" placeholder="Enter message here" ><?php echo $message;?></textarea><br><br>
 				<input type='hidden' name='message_id' value="<?php echo "$message_id"; ?>"/> 
 				<input type="submit">
 			</form>

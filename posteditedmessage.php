@@ -1,5 +1,10 @@
 <?php
 	session_start();
+    
+    require_once '/htmlpurifier-4.7.0/library/HTMLPurifier.auto.php';
+
+	$config = HTMLPurifier_Config::createDefault();
+	$purifier = new HTMLPurifier($config);
 
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
@@ -15,7 +20,8 @@
 	}
 	
 	$message_id = $_POST['message_id'];
-	$editedMessage = $_POST['message'];
+    $editedMessage = mysql_real_escape_string($_POST["message"] );
+	$editedMessage = $purifier->purify($editedMessage);
 	if ($error) {
 	    header("location:profile.php?msg=fail");
 	} else if ($isSpecial){
