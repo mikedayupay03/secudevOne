@@ -32,16 +32,22 @@
 
     echo "<a href='otheruserprofile.php?user_id=". $messages[6] ."'>" . $messages[0] . "</a>" . "<br>";
     echo "<a href='otheruserprofile.php?user_id=". $messages[6] ."'>" . $messages[1] . "</a>" . "<br>";
-    if($messages[7] == 0){
+   echo $messages[2] . "<br>";
+    /*if($messages[7] == 0){
         echo "<br>";
     }else {
         echo "edited:" . "<br>";
         echo $messages[7] . "<br>";
-    }
+    }*/
     echo "</td>
     <td>";
 
-    echo "<h5>" . $messages[4] . "</h5>";
+    echo "<b>Date posted: </b>" . $messages[4];
+    if($messages[7] == 0){
+        echo "<br>";
+    }else {
+        echo "<br><b>Date edited: </b>" . $messages[7];
+    }
     echo "<p>" . $messages[3] . "</p>";
     echo "</td>";
 	echo "<td>";
