@@ -20,7 +20,8 @@
 	}
 	
 	$message_id = $_POST['message_id'];
-    $editedMessage = mysql_real_escape_string($_POST["message"] );
+    //$editedMessage = mysql_real_escape_string($_POST["message"] );
+    $editedMessage =($_POST["message"] );
 	$editedMessage = $purifier->purify($editedMessage);
 	if ($error) {
 	    header("location:profile.php?msg=fail");
@@ -28,14 +29,14 @@
 		header("location:profile.php?msg=special");
 	} else {
 		
-			$query = "UPDATE message_board SET message='" . $editedMessage . "' WHERE message_id = " . $message_id;
+			$query = "UPDATE message_board SET message='" . $editedMessage . "',edited_date= CURRENT_TIMESTAMP WHERE message_id = " . $message_id;
 			
 		
 		$result = mysql_query($query);
 		echo "message id " . $message_id;
 		echo $result;
 		echo mysql_error();
-		//header("location:logged.php?msg=success");
+		header("location:logged.php?msg=success");
 	}
 	
 

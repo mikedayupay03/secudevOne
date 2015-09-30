@@ -14,7 +14,7 @@
    $row = mysql_fetch_array($result);
 
   $sql = "SELECT * FROM message_board";
-  $getMessageQuery = "SELECT u.first_name, u.username, u.date_joined, m.message, m.date_posted, m.message_id, u.user_id FROM message_board AS m, userdb AS u WHERE u.user_id = m.user_id ORDER BY m.date_posted DESC LIMIT 10";
+  $getMessageQuery = "SELECT u.first_name, u.username, u.date_joined, m.message, m.date_posted, m.message_id, u.user_id, m.edited_date FROM message_board AS m, userdb AS u WHERE u.user_id = m.user_id ORDER BY m.date_posted DESC LIMIT 10";
   $rs = mysql_query($getMessageQuery);
   $messages = mysql_fetch_row($rs);
   // if($messages) {
@@ -32,7 +32,12 @@
 
     echo "<a href='otheruserprofile.php?user_id=". $messages[6] ."'>" . $messages[0] . "</a>" . "<br>";
     echo "<a href='otheruserprofile.php?user_id=". $messages[6] ."'>" . $messages[1] . "</a>" . "<br>";
-    echo $messages[2] . "<br>";
+    if($messages[7] == 0){
+        echo "<br>";
+    }else {
+        echo "edited:" . "<br>";
+        echo $messages[7] . "<br>";
+    }
     echo "</td>
     <td>";
 
