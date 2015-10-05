@@ -1,6 +1,12 @@
 <?php 
 session_start();
-session_destroy();
 
-header("location: index.php");
+$logout = $_POST['logout'];
+if($logout == 1){
+    session_destroy();
+    echo $logout;
+    header("location: index.php");
+}else{
+    header("location: logged.php");
+}
 ?>

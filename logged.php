@@ -70,8 +70,18 @@
 			// }
 
 		</script>
+        <script>
+            function logoutFunction(){
+                $("input#logout").val(1);
+                // alert($("input#logout").val());
+                $("form#logoutForm").submit();
+            }
+        </script>
 	</head>
 	<body>
+        <form id="logoutForm" action="logout.php" method="POST">
+            <input type="hidden" name="logout" id="logout"/>
+        </form>
 		<header>
 			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>!</h1>
 		</header>
@@ -94,7 +104,7 @@
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
-			echo "<br><br><a href=logout.php>Log Out</a>";
+			echo "<br><br><a href='#' onclick='logoutFunction();'>Log Out</a>";
 			?>
 
 		</div>
