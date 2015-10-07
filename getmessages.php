@@ -9,7 +9,7 @@
 
 	//Get username of logged in user
    $myusername = $_SESSION['myusername'];
-   $strSQL = "SELECT username FROM userdb WHERE username = '" . $myusername . "'";
+   $strSQL = "SELECT username, admin FROM userdb WHERE username = '" . $myusername . "'";
    $result = mysql_query($strSQL);
    $row = mysql_fetch_array($result);
 
@@ -51,7 +51,7 @@
     echo "<p>" . $messages[3] . "</p>";
     echo "</td>";
 	echo "<td>";
-	if($row[0] == $messages[1]){
+	if($row[0] == $messages[1] || $row['admin'] == 1){
 		echo "<a href='editmessage.php?message_id=".$messages[5]."'><button class='btn' type='button'><strong><center>Edit</center></strong></button></a>";
 		echo "</td>";
 		echo "<td>";
