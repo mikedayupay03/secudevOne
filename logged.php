@@ -121,6 +121,13 @@
 
 		<div class="message_board">
 			<h3>Message Board</h3>
+			<div>
+				<form method=post action=query.php>
+				Search messages: <input type=text name=squery>
+				<input type=submit>
+				<!--<button type=advanced onClick=function()>Advanced</button>-->
+				</form>
+			</div>
 			<hr>
 			<div id="message_container">
 

@@ -9,5 +9,6 @@ while ($row = mysql_fetch_array($rs)) {
 	echo "<tr>\n<td>" . $row["message"] . "</td>\n<td>" . $row["date_posted"] . "</td>\n<td>" . $row["username"] . "</td>\n</tr>\n";
 }
 echo "</table>";
+echo "<br><a href=logged.php>Go Back</a>";
 mysql_close();
 ?>
