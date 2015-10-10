@@ -127,6 +127,13 @@
 				<input type=submit>
 				<!--<button type=advanced onClick=function()>Advanced</button>-->
 				</form>
+				<?php
+
+					if($row['admin'] == 1)
+						echo "<a href='export.php'>Backup Posts</a>";
+
+				 ?>
+
 			</div>
 			<hr>
 			<div id="message_container">
