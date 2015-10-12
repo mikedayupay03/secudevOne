@@ -129,9 +129,9 @@
 				</form>
 				<?php
 
-					if($row['admin'] == 1)
+					if($row['admin'] == 1){
 						echo "<a href='export.php'>Backup Posts</a><br>";
-						echo "<a href='backupposts.php'>See Backup Posts</a>"
+						echo "<a href='backupposts.php'>See Backup Posts</a>";
 					}
 				 ?>
 
