@@ -1,25 +1,19 @@
-<?php
-
-
-
-
-
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<title></title>
-		
+
 	</head>
 	<body>
-		<table border="1">
-			<th></th>
-		</table>
+		<?php
+			if ($handle = opendir('.')) {
+				while(false !== ($entry = readdir($handle))) {
+					if($entry != "." && $entry != "..") {
+						echo "<a href='" . $entry . "' download>" . $entry . "</a>";
+					}
+				}
+			}
+		?>
 
 
 
