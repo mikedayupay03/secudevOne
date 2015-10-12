@@ -9,14 +9,15 @@ var elem = 1;
 $(document).ready(function(){
 	console.log("ad");
 	$(document).on("change", ".sdate", function(){
+        document.getElementById("temp").innerHTML = "";
 		var newDiv = document.createElement('div');
 		if (this.value == 'between') {
-			newDiv.innerHTML = "a<br>";
+			document.getElementById("temp").innerHTML = "<input type=text name=date1> AND <input type=text name=date2>";
 		} else {
-			newDiv.innerHTML = "b<br>";
+			document.getElementById("temp").innerHTML = "<input type=text name=date1>";
 		}
-		document.getElementById("testing").appendChild(newDiv);
-		document.getElementById("testing").removeChild(getElementById("testing").childNodes[0]);
+        
+		// document.getElementById("testing").appendChild(newDiv);
 		});
 });
 
@@ -33,7 +34,7 @@ function addUsers(name) {
 }
 function addDates(name) {
 	var newDiv = document.createElement('div');
-	newDiv.innerHTML = "<select class='sdate' id=sdate" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select>";
+	newDiv.innerHTML = "<select class='sdate' id=sdate" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select> <div id=temp><input type=text> AND <input type=text></div>";
 	document.getElementById("testing").appendChild(newDiv);
 	b++;
 }
