@@ -9,7 +9,7 @@
 	$today = date("jS F Y");
 	echo $today . "<br>";
 
-	$fileName = "backup-" . $today . ".csv";
+	$fileName = "backup/backup-" . $today . ".csv";
 	
 	$myfile = fopen($fileName, "w") or die ("Unable to open file!");
 
