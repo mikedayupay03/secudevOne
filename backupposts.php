@@ -13,6 +13,7 @@
 						echo "<a href='backup/" . $entry . "' download>" . $entry . "</a><br/>";
 					}
 				}
+				echo "<br/><a href='logged.php'>Go Back</a>";
 			}
 		?>
 
