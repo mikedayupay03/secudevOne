@@ -27,7 +27,8 @@ $(document).ready(function(){
 }*/
 function addUsers(name) {
 	var newDiv = document.createElement('div');
-	newDiv.innerHTML = "Input user " + a + ": <input type=text name=suser[]><br>";
+	newDiv.innerHTML = "<div class='sname'>Input user " + a + ": <input type=text name=suser[]><br></div>";
+	document.getElementById("testing2").appendChild(newDiv);
 	a++;
 }
 function addDates(name) {
@@ -42,6 +43,7 @@ function addDates(name) {
 <form method=post action=query.php>
 Search query: <input type=text name=squery><br>
 <div id=testing></div>
+<div id=testing2></div>
 <input type=button value='Specify dates' onClick=addDates('testing')>
 <input type=button value='Specify users' onClick=addUsers('testing')>
 <input type=submit>
