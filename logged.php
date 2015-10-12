@@ -130,7 +130,7 @@
 				<?php
 
 					if($row['admin'] == 1)
-						echo "<a href='export.php'>Backup Posts</a>";
+						echo "<a href='export.php'>Backup Posts</a><br>";
 						echo "<a href='backupposts.php'>See Backup Posts</a>"
 
 				 ?>
