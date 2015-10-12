@@ -34,7 +34,7 @@ function addUsers(name) {
 }
 function addDates(name) {
 	var newDiv = document.createElement('div');
-	newDiv.innerHTML = "<select class='sdate' id=sdate" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select> <div id=temp><input type=date> AND <input type=date></div>";
+	newDiv.innerHTML = "<select><option>AND</option><option>OR</option></select> <select class='sdate' id=sdate" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select> <div id=temp><input type=date> AND <input type=date></div>";
 	document.getElementById("testing").appendChild(newDiv);
 	b++;
 }
