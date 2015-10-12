@@ -6,10 +6,10 @@
 	</head>
 	<body>
 		<?php
-			if ($handle = opendir('.')) {
+			if ($handle = opendir('.csv')) {
 				while(false !== ($entry = readdir($handle))) {
 					if($entry != "." && $entry != "..") {
-						echo "<a href='" . $entry . "' download>" . $entry . "</a>";
+						echo "<a href='" . $entry . "' download>" . $entry . "</a><br/>";
 					}
 				}
 			}
