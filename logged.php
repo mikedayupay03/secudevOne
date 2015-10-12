@@ -131,6 +131,7 @@
 
 					if($row['admin'] == 1)
 						echo "<a href='export.php'>Backup Posts</a>";
+						echo "<a href='backupposts.php'>See Backup Posts</a>"
 
 				 ?>
 
