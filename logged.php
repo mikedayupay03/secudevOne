@@ -129,7 +129,7 @@
             }
             function addDates(name) {
                 var newDiv = document.createElement('div');
-                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select><option>AND</option><option>OR</option></select> <select class='sdate' id=sdate" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select></div> <div id=temp style= display:inline;><input type=date> AND <input type=date></div></div>";
+                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select name='operator[]'><option>AND</option><option>OR</option></select> <select class='sdate' id=sdate name='condition[]'" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select></div> <div id=temp style= display:inline;><input type=date name='date1'> AND <input type=date name='date2'></div></div>";
                 document.getElementById("testing").appendChild(newDiv);
                 b++;
             }
