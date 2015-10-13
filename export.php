@@ -5,9 +5,13 @@
 
 	$messageQuery = "SELECT u.username, m.message, m.date_posted FROM message_board AS m, userdb AS u WHERE m.user_id = u.user_id";
 	$rs = mysql_query($messageQuery);
+	
+	$today = date("jS F Y");
+	echo $today . "<br>";
 
-
-	$myfile = fopen("backup.csv", "w") or die ("Unable to open file!");
+	$fileName = "backup-" . $today . ".csv";
+	
+	$myfile = fopen($fileName, "w") or die ("Unable to open file!");
 
 	$columnName = "username, message, date posted\n";
 	fwrite($myfile, $columnName);
