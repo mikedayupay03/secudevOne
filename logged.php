@@ -34,7 +34,7 @@
 		<meta charset="utf-8">
 		<title>SECUDEV: Landing Page</title>
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script type="text/javascript">
 
 		$(document).ready(function(){
@@ -77,6 +77,63 @@
                 $("form#logoutForm").submit();
             }
         </script>
+        <script>
+        $(document).ready(function(){
+			$("#advanced").hide();
+            $("#hideButton").hide();
+		});
+        
+        function toggle (advanced){
+            if(advanced){
+                $("#advanced").show();
+                $("#advancedButton").hide();
+                $("#hideButton").show();
+            } else{
+                $("#advanced").hide();
+                $("#advancedButton").show();
+                $("#hideButton").hide();
+            }
+        }
+        
+        </script>
+        <script>
+            var a = 0;
+            var b = 0;
+            var elem = 1;
+
+            $(document).ready(function(){
+                console.log("ad");
+                $(document).on("change", ".sdate", function(){
+                    document.getElementById("temp").innerHTML = "";
+                    var newDiv = document.createElement('div');
+                    if (this.value == 'between') {
+                        document.getElementById("temp").innerHTML = "<input type=date name=date1> AND <input type=date name=date2>";
+                    } else {
+                        document.getElementById("temp").innerHTML = "<input type=date name=date1>";
+                    }
+                    
+                    // document.getElementById("testing").appendChild(newDiv);
+                    });
+            });
+
+            /*function moreDates() {
+                elem = this;
+                var newDiv = document.createElement('div');
+                alert(elem.value);
+            }*/
+            function addUsers(name) {
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML = "<div class='sname'><select><option>AND</option><option>OR</option></select> &nbsp; Input user " + a + ": <input type=text name=suser[]></div><br>";
+                document.getElementById("testing2").appendChild(newDiv);
+                a++;
+            }
+            function addDates(name) {
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select><option>AND</option><option>OR</option></select> <select class='sdate' id=sdate" + b +"><option value=between>Between</option><option value=earlier>Earlier</option><option value=later>Later</option><option value=during>During</option></select></div> <div id=temp style= display:inline;><input type=date> AND <input type=date></div></div>";
+                document.getElementById("testing").appendChild(newDiv);
+                b++;
+            }
+    </script>
 	</head>
 	<body>
         <form id="logoutForm" action="logout.php" method="POST">
@@ -122,10 +179,10 @@
 		<div class="message_board">
 			<h3>Message Board</h3>
 			<div>
-				<form method=post action=query.php>
-				Search messages: <input type=text name=squery>
-				<input type=submit>
-				<!--<button type=advanced onClick=function()>Advanced</button>-->
+				<form method="post" action="query.php">
+				Search messages: <input type="text" name="squery">
+				<input type="submit"/>
+				<button type="button" id="advancedButton" onclick="toggle(1)">Advanced Search</button>
 				</form>
 				<?php
 
@@ -134,7 +191,16 @@
 						echo "<a href='backupposts.php'>See Backup Posts</a>";
 					}
 				 ?>
-
+                <form method=post action=query.php>
+                <button type="button" id="hideButton" style="position:absolute; left:375px; top: 505px;" onclick="toggle(0)">Hide Advanced Search</button>
+                <div id="advanced">
+                <div id=testing></div><br>
+                <div id="testing2"></div>
+                    <input type="button" value='Specify dates' onClick=addDates('testing')>
+                    <input type="button" value='Specify users' onClick=addUsers('testing')>
+                    <input type=submit>
+                </div>
+                </form>
 			</div>
 			<hr>
 			<div id="message_container">
