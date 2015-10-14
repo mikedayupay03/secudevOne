@@ -5,15 +5,62 @@
     header("Location:index.php");
 	}
 	$n = $_POST["suser"];
+	$o = $_POST["doption"];
+	$p = $_POST["d0"];
+	$q = $_POST["d1"];
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
 	$x = $_POST["squery"];
-	if (count($n) > 0) {
+	if (count($n) > 0 && count($o) > 0) {
+		$strSQL = "SELECT a.message,a.date_posted,b.username FROM message_board a,userdb b WHERE a.user_id = b.user_id AND LOWER(a.message) LIKE '%" . strtolower($x) . "%' AND ((";
+		for ($b = 0 ; $b < count($o) ; $b++) {
+			if ($o[$b] == 1) {
+				$strSQL = $strSQL . "a.date_posted >= '" . $p[$b] . "' AND a.date_posted <= '" . $q[$b] . "'";
+			} else if ($o[$b] == 2) {
+				$strSQL = $strSQL . "a.date_posted <= '" . $p[$b] . "'";
+			} else if ($o[$b] == 3) {
+				$strSQL = $strSQL . "a.date_posted >= '" . $p[$b] . "'";
+			} else if ($o[$b] == 4) {
+				$strSQL = $strSQL . "a.date_posted LIKE '%" . $p[$b] . "%'";
+			}
+			if ($b != count($o) - 1) {
+				$strSQL = $strSQL . " OR ";
+			}
+		}
+		$strSQL = $strSQL . ") " . $_POST["cond"] . " (";
+		for ($a = 0 ; $a < count($n) ; $a++) {
+			$strSQL = $strSQL . "b.username = '" . $n[$a] . "'";
+			if ($a != count($n) - 1) {
+				$strSQL = $strSQL . " OR ";
+			}
+		}
+		$strSQL = $strSQL . "))";
+	} else if (count($n) > 0) {
 		$strSQL = "SELECT a.message,a.date_posted,b.username FROM message_board a,userdb b WHERE a.user_id = b.user_id AND LOWER(a.message) LIKE '%" . strtolower($x) . "%' AND (";
 		for ($a = 0 ; $a < count($n) ; $a++) {
-			$strSQL = $strSQL . "b.username = '" . $n[$a] . "' OR ";
+			$strSQL = $strSQL . "b.username = '" . $n[$a] . "'";
+			if ($a != count($n) - 1) {
+				$strSQL = $strSQL . " OR ";
+			}
 		}
-		$strSQL = $strSQL . "0)";
+		$strSQL = $strSQL . ")";
+	} else if (count($o) > 0){
+		$strSQL = "SELECT a.message,a.date_posted,b.username FROM message_board a,userdb b WHERE a.user_id = b.user_id AND LOWER(a.message) LIKE '%" . strtolower($x) . "%' AND (";
+		for ($b = 0 ; $b < count($o) ; $b++) {
+			if ($o[$b] == 1) {
+				$strSQL = $strSQL . "(a.date_posted >= '" . $p[$b] . "' AND a.date_posted <= '" . $q[$b] . "') OR a.date_posted LIKE '%" . $p[$b] . "%' OR a.date_posted LIKE '%" . $q[$b] . "%'";
+			} else if ($o[$b] == 2) {
+				$strSQL = $strSQL . "a.date_posted < '" . $p[$b] . "' OR a.date_posted LIKE '%" . $p[$b] . "%'";
+			} else if ($o[$b] == 3) {
+				$strSQL = $strSQL . "a.date_posted > '" . $p[$b] . "' OR a.date_posted LIKE '%" . $p[$b] . "%'";
+			} else if ($o[$b] == 4) {
+				$strSQL = $strSQL . "a.date_posted LIKE '%" . $p[$b] . "%'";
+			}
+			if ($b != count($o) - 1) {
+				$strSQL = $strSQL . " OR ";
+			}
+		}
+		$strSQL = $strSQL . ")";
 	} else {
 		$strSQL = "SELECT a.message,a.date_posted,b.username FROM message_board a,userdb b WHERE a.user_id = b.user_id AND LOWER(a.message) LIKE '%" . strtolower($x) . "%'";
 	}
