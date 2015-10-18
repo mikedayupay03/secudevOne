@@ -1,0 +1,3 @@
+Options -Indexes
+ErrorDocument 403 "<H1>You don't have permission to access this directory</H1><a href='../logged.php'>Go Back to home page</a>"
+ErrorDocument 404 "<h1>File not found</h1>"
