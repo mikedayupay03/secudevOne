@@ -6,6 +6,12 @@
 	</head>
 	<body>
 		<?php
+			error_reporting(0);
+			session_start();
+			if(!isset($_SESSION['myusername'])){ //if login in session is not set
+			header("Location:index.php");
+			}
+			
 			if ($handle = opendir('backup/')) {
 				echo "Existing Backup Files <br>";
 				while(false !== ($entry = readdir($handle))) {
