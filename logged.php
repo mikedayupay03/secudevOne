@@ -101,21 +101,6 @@
             var b = 0;
             var elem = 1;
 
-            $(document).ready(function(){
-                console.log("ad");
-                $(document).on("change", ".sdate", function(){
-                    document.getElementById("temp").innerHTML = "";
-                    var newDiv = document.createElement('div');
-                    if (this.value == '1') {
-                        document.getElementById("temp").innerHTML = "<input type=date name=d0[]> AND <input type=date name=d1[]>";
-                    } else {
-                        document.getElementById("temp").innerHTML = "<input type=date name=d0[]>";
-                    }
-                    
-                    // document.getElementById("testing").appendChild(newDiv);
-                    });
-            });
-
             /*function moreDates() {
                 elem = this;
                 var newDiv = document.createElement('div');
@@ -129,9 +114,18 @@
             }
             function addDates(name) {
                 var newDiv = document.createElement('div');
-                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select name='cond'><option value=AND>AND</option><option value=OR>OR</option></select> <select class='sdate' id=sdate name='doption[]'" + b +"><option value=1>Between</option><option value=2>Earlier</option><option value=3>Later</option><option value=4>During</option></select></div> <div id=temp style= display:inline;><input type=date name='d0[]'> AND <input type=date name='d1[]'></div></div>";
+                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select name='cond'><option value=AND>AND</option><option value=OR>OR</option></select> <select id=doption" + b + "  name=doption[] onchange=myFunction('doption" + b + "','hider" + b + "')><option value=1>Between</option><option value=2>Earlier</option><option value=3>Later</option><option value=4>During</option></select></div> <div id=temp style= display:inline;><input type=date name='d0[]'> <input type=date id=hider" + b + " name=d1[]></div></div>";
                 document.getElementById("testing").appendChild(newDiv);
                 b++;
+            }
+            
+            function myFunction(name1,name2) {
+                var x = document.getElementById(name1).value;
+                if (x == 1) {
+                    document.getElementById(name2).style.visibility = "visible";
+                } else {
+                    document.getElementById(name2).style.visibility = "hidden";
+                }
             }
     </script>
 	</head>
