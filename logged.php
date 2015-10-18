@@ -106,7 +106,7 @@
                 $(document).on("change", ".sdate", function(){
                     document.getElementById("temp").innerHTML = "";
                     var newDiv = document.createElement('div');
-                    if (this.value == 'between') {
+                    if (this.value == '1') {
                         document.getElementById("temp").innerHTML = "<input type=date name=d0[]> AND <input type=date name=d1[]>";
                     } else {
                         document.getElementById("temp").innerHTML = "<input type=date name=d0[]>";
