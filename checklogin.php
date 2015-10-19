@@ -6,7 +6,8 @@ $tbl_name = "userdb";
 
 // username and password sent from form
 $myusername=$_POST['username'];
-$mypassword = $_POST['pass'];
+$salt = sha1(md5($_POST['pass']));
+$mypassword = md5($_POST['pass'].$salt);
 
 // To protect MySQL injection
 $myusername = stripslashes($myusername);

@@ -15,6 +15,7 @@ $diff = $bdate->diff($tdate)->format("%y");
 $required = array('first_name', 'last_name', 'sex', 'username', 'pass', 'bday', 'me');
 $error = false;
 $isSpecial = false;
+$pass = $_POST["pass"];
 
 foreach($required as $field) {
 		if (empty($_POST[$field]) || ctype_space($_POST[$field])) {
@@ -23,6 +24,10 @@ foreach($required as $field) {
 			$isSpecial = true;
 		}
 	}
+    
+    //password encoding
+    $salt = sha1(md5($pass));
+    $pass = md5($pass.$salt);
 
 	if ($error) {
 	    header("location:register.php?msg=fail");
@@ -38,9 +43,9 @@ foreach($required as $field) {
 		header("location:register.php?msg=user");
 	} else {
 		 if ($_POST["sex"] == 1) {	
-				$strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin,date_joined) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . $_POST["sex"] . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0, CURRENT_TIMESTAMP)";		
+				$strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin,date_joined) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . $_POST["sex"] . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $pass . "','" . $_POST["me"] . "',0, CURRENT_TIMESTAMP)";		
 		 } else if ($_POST["sex"] == 2) {
-				$strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin,date_joined) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . '0' . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "',0, CURRENT_TIMESTAMP)";
+				$strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin,date_joined) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . '0' . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $pass . "','" . $_POST["me"] . "',0, CURRENT_TIMESTAMP)";
 		 }
 		 mysql_query($strSQL);
 		 header("location:index.php?msg=success");
