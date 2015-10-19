@@ -4,13 +4,39 @@
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
     header("Location:index.php");
 	}
-	$n = $_POST["suser"];
-	$o = $_POST["doption"];
-	$p = $_POST["d0"];
-	$q = $_POST["d1"];
-	mysql_connect("localhost","root","1234") or die (mysql_error());
+    //connect to database
+    mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
+    
+    
+    //the variable for querying users
+    $n = $_POST["suser"];
+    array_walk_recursive( $n, 'stripslashes' );
+    array_walk_recursive( $n, 'mysql_real_escape_string' );
+    
+    //the condition variable (e.g. between, earlier, etc.)
+	$o = $_POST["doption"];
+    array_walk_recursive( $o, 'stripslashes' );
+    array_walk_recursive( $o, 'mysql_real_escape_string' );
+    
+    //the date variables
+	$p = $_POST["d0"];
+    array_walk_recursive( $p, 'stripslashes' );
+    array_walk_recursive( $p, 'mysql_real_escape_string' );
+	$q = $_POST["d1"];
+    array_walk_recursive( $q, 'stripslashes' );
+    array_walk_recursive( $q, 'mysql_real_escape_string' );
+    
+    //the variable for the basic search query
 	$x = $_POST["squery"];
+    $x = stripslashes($x);
+    $x = mysql_real_escape_string($x);
+    
+    //the operator variable
+    $operator = $_POST["cond"];
+    $operator = stripslashes($operator);
+    $operator = mysql_real_escape_string($operator);
+    
 	if (count($n) > 0 && count($o) > 0) {
 		$strSQL = "SELECT a.message,a.date_posted,b.username FROM message_board a,userdb b WHERE a.user_id = b.user_id AND LOWER(a.message) LIKE '%" . strtolower($x) . "%' AND ((";
 		for ($b = 0 ; $b < count($o) ; $b++) {
@@ -27,7 +53,7 @@
 				$strSQL = $strSQL . " OR ";
 			}
 		}
-		$strSQL = $strSQL . ") " . $_POST["cond"] . " (";
+		$strSQL = $strSQL . ") " . $operator . " (";
 		for ($a = 0 ; $a < count($n) ; $a++) {
 			$strSQL = $strSQL . "b.username = '" . $n[$a] . "'";
 			if ($a != count($n) - 1) {
