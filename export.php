@@ -5,6 +5,11 @@
     header("Location:index.php");
 	}
 	else{
+	if(!($_SESSION['admin'])) {
+	
+		header("Location:logged.php");
+	} else {
+
 	mysql_connect("localhost", "root", "1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
 
@@ -30,6 +35,7 @@
 
 	mysql_close();
 	header("location:logged.php");
+	}
 	}
 
 
