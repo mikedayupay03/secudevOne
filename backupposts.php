@@ -10,7 +10,12 @@
 			session_start();
 			if(!isset($_SESSION['myusername'])){ //if login in session is not set
 			header("Location:index.php");
-			}
+			}else {
+
+			if(!($_SESSION['admin'])) {
+
+			header("Location:logged.php");	
+			} else {
 			
 			if ($handle = opendir('backup/')) {
 				echo "Existing Backup Files <br>";
@@ -20,6 +25,8 @@
 					}
 				}
 				echo "<br/><a href='logged.php'>Go Back</a>";
+			}
+			}
 			}
 		?>
 

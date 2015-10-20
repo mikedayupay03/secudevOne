@@ -20,11 +20,14 @@ $result = mysql_query("SELECT * FROM $tbl_name WHERE username='$myusername' and 
 // Mysql_num_row is counting table row
 $count=mysql_num_rows($result);
 
+$row = mysql_fetch_array($result);
+
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1){
 // Register $myusername, $mypassword and redirect to file "profile.php"
 session_start();
 $_SESSION['myusername'] = $myusername;
+$_SESSION['admin'] = $row['admin'];
 header("location:logged.php");
 }
 else {
