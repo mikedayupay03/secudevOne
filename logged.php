@@ -5,6 +5,9 @@
 		if ($msg ==  "success"){
 			?> <script> alert("Profile edited successfully!"); </script> <?php
 		}
+		else if ($msg ==  "export"){
+			?> <script> alert("Export Successful"); </script> <?php
+		}
 	}
 
 	error_reporting(0);
@@ -181,7 +184,7 @@
 				<?php
 
 					if($row['admin'] == 1){
-						echo "<a href='export.php'>Backup Posts</a><br>";
+						echo "<br><a href='export.php'>Backup Posts</a><br>";
 						echo "<a href='backupposts.php'>See Backup Posts</a>";
 					}
 				 ?>
