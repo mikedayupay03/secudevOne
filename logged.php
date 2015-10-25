@@ -17,12 +17,14 @@
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
 	//This code block is for deleting messages
+	$myusername = $_SESSION['myusername'];
 	if(isset($_GET['message_id'])){
 		$messageId = $_GET['message_id'];
-    $query="DELETE FROM message_board WHERE message_id like '$messageId'";
+		$query="DELETE FROM message_board WHERE message_id like '$messageId'";
+		$result=mysql_query($query);
+		$query = "UPDATE badges a , userdb b SET a.posts = a.posts - 1 WHERE b.username = '" . $myusername . "'";
 		$result=mysql_query($query);
 	}
-	$myusername = $_SESSION['myusername'];
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
@@ -146,7 +148,50 @@
 			echo "Salutation: " . $row[4] . "<br>";
 			echo "Birthday: " . $row[5] . "<br>";
 			echo "Username: " . $row[6] . "<br>";
-			echo "About: " . $row[8];
+			echo "About: " . $row[8] . "<br>";
+			echo "Badges: <ul>";
+			$query = "SELECT a.posts,a.donations,a.purchases FROM badges a , userdb b WHERE b.username = '" . $myusername . "'";
+			$result = mysql_fetch_array(mysql_query($query));
+			$a = $result[0];
+			$b = $result[1];
+			$c = $result[2];
+			if ($a >= 3) {
+				echo "<li>Participant</li>";
+			}
+			if ($a >= 5) {
+				echo "<li>Chatter</li>";
+			}
+			if ($a >= 10) {
+				echo "<li>Socialite</li>";
+			}
+			if ($b >= 5) {
+				echo "<li>Supporter</li>";
+			}
+			if ($b >= 20) {
+				echo "<li>Contributor</li>";
+			}
+			if ($b >= 100) {
+				echo "<li>Pillar</li>";
+			}
+			if ($c >= 5) {
+				echo "<li>Shopper</li>";
+			}
+			if ($c >= 20) {
+				echo "<li>Promoter</li>";
+			}
+			if ($c >= 100) {
+				echo "<li>Elite</li>";
+			}
+			if ($a >= 3 && $b >= 5 && $c >= 5) {
+				echo "<li>Explorer</li>";
+			}
+			if ($a >= 5 && $b >= 20 && $c >= 20) {
+				echo "<li>Backer</li>";
+			}
+			if ($a >= 10 && $b >= 100 && $c >= 100) {
+				echo "<li>Evangelist</li>";
+			}
+			echo "</ul>";
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
