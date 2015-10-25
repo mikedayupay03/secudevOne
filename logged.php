@@ -9,7 +9,6 @@
 			?> <script> alert("Export Successful"); </script> <?php
 		}
 	}
-
 	error_reporting(0);
 	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
@@ -17,19 +16,16 @@
 	}
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
-
 	//This code block is for deleting messages
 	if(isset($_GET['message_id'])){
 		$messageId = $_GET['message_id'];
     $query="DELETE FROM message_board WHERE message_id like '$messageId'";
 		$result=mysql_query($query);
 	}
-
 	$myusername = $_SESSION['myusername'];
    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
    $rs = mysql_query($strSQL);
    $row = mysql_fetch_array($rs);
-
 ?>
 
 <html>
@@ -39,11 +35,9 @@
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
 		<script src="js/jquery.min.js"></script>
 		<script type="text/javascript">
-
 		$(document).ready(function(){
 			loadstation();
 		});
-
 		function loadstation(){
 			$.ajax({
 				url: "getmessages.php",
@@ -71,7 +65,6 @@
 			// 	xmlhttp.open("GET", "getMessages.php", true);
 			// 	xmlhttp.send();
 			// }
-
 		</script>
         <script>
             function logoutFunction(){
@@ -103,7 +96,6 @@
             var a = 0;
             var b = 0;
             var elem = 1;
-
             /*function moreDates() {
                 elem = this;
                 var newDiv = document.createElement('div');
@@ -182,7 +174,6 @@
 				<button type="button" id="advancedButton" onclick="toggle(1)">Advanced Search</button>
 		
 				<?php
-
 					if($row['admin'] == 1){
 						echo "<br><a href='export.php'>Backup Posts</a><br>";
 						echo "<a href='backupposts.php'>See Backup Posts</a>";
