@@ -131,7 +131,7 @@
             <input type="hidden" name="logout" id="logout"/>
         </form>
 		<header>
-			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href=""><img align="right" src= "res/cart.png" width="95" height="50"></a><a href=""><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
+			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href="cart.php"><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
 		</header>
 
 		<div class="container">
