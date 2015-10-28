@@ -178,7 +178,7 @@
 			}
 			if ($a >= 10 && $b >= 100 && $c >= 100) {
 				echo "<li>Evangelist<img src=evangelist.png></li>";
-			} else if ($a >= 5 && $b >= 20 && $c >= 20)) {
+			} else if ($a >= 5 && $b >= 20 && $c >= 20) {
 				echo "<li>Backer<img src=backer.png></li>";
 			} else if ($a >= 3 && $b >= 5 && $c >= 5) {
 				echo "<li>Explorer<img src=explorer.png></li>";
