@@ -39,7 +39,6 @@
     $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
     $rs = mysql_query($strSQL);
 ?>
-?>
 
 <!DOCTYPE html>
 <html lang="en">
