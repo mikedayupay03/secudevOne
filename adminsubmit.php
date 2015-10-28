@@ -30,6 +30,8 @@ if (!preg_match("/^[a-zA-Z\s]+$/",$_POST["first_name"])) {
   $strSQL = "INSERT INTO userdb(first_name,last_name,male,salutation,bday,username,password,about,admin) VALUES ('" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "'," . $_POST["sex"] . ",'" . $_POST["Select1"] . "','" . $_POST["bday"] . "','". $_POST["username"] . "','" . $_POST["pass"] . "','" . $_POST["me"] . "'," . $_POST["admin"] . ")";
  }
  mysql_query($strSQL);
+ $strSQL = "INSERT INTO badges(posts,donations,purchases) VALUES (0,0,0)";
+ mysql_query($strSQL);
 }
 
 header("location:index.php?msg=success");

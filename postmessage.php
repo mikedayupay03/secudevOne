@@ -24,6 +24,8 @@
   $result = mysql_query($insertMessageQuery);
   if ($result) {
     echo "success!";
+	$updatePostQuery = "UPDATE badges SET posts = posts + 1 WHERE user_id = " . $userId[0];
+	mysql_query($updatePostQuery);
   } else {
     echo "failed!";
   }

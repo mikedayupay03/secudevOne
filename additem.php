@@ -2,7 +2,7 @@
 	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "fail"){
-			?> <script> alert("Please fill up all fields! Special Characters are not allowed."); </script> <?php
+			?> <script> alert("Please fill up all fields!"); </script> <?php
 		} else if ($msg ==  "special"){
 			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
 		} else if ($msg ==  "bday"){
@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Profile Settings</title>
+		<title>Add Item</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -76,17 +76,22 @@
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form action="#" method="post">
-					<h2>Password</h2>
+				<form action="insertitem.php" method="post">
+					<h2>Add Item</h2>
 					<hr>
-					Current Password: <input type="password" name="pass" size="20" value="">
+					Item name: <input type="text" name="item_name" size="50" maxlength="50" value="">
 					<br><br>
-					New Password: <input type="password" name="pass" size="20" value="">
+					Description: <textarea rows="2" cols="50" name = "item_description" type = "text"></textarea>
 					<br><br>
-					Verify Password: <input type="password" name="pass" size="20" value="">
+					Price: <input type="text" name="item_price" size="50" maxlength="50" value="">
 					<br><br>
+					Image: <input type="file" name="item_image" /><br />
+					<input type="hidden" name="MAX_FILE_SIZE" value="4000000" />
 
-				<input class="btn-danger" type="submit" name="submit" value="Save Changes">
+				<input class="btn-danger" type="submit" name="additem" value="Submit">
+				<a href="store.php">
+						<button class="btn-danger" type="button" style="position: relative; top: 5px; width: 365px; height: 40px;">Cancel</button>
+				</a>
 				</form>
 			</div>
 		</div><!-- container -->
