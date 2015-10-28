@@ -149,39 +149,39 @@
 			echo "Birthday: " . $row[5] . "<br>";
 			echo "Username: " . $row[6] . "<br>";
 			echo "About: " . $row[8] . "<br>";
-			echo "Badges: <ul>";
+			echo "Badges: <br>";
 			$query = "SELECT a.posts,a.donations,a.purchases FROM badges a , userdb b WHERE b.username = '" . $myusername . "'";
 			$result = mysql_fetch_array(mysql_query($query));
 			$a = $result[0];
 			$b = $result[1];
 			$c = $result[2];
 			if ($a >= 10) {
-				echo "<li>Socialite<img src=socialite.png></li>";
+				echo "<img src=socialite.png>";
 			} else if ($a >= 5) {
-				echo "<li>Chatter<img src=chatter.png></li>";
+				echo "<img src=chatter.png>";
 			} else if ($a >= 3) {
-				echo "<li>Participant<img src=participant.png></li>";
+				echo "<img src=participant.png>";
 			}
 			if ($b >= 100) {
-				echo "<li>Pillar<img src=pillar.png></li>";
+				echo "<img src=pillar.png>";
 			} else if ($b >= 20) {
-				echo "<li>Contributor<img src=contributor.png></li>";
+				echo "<img src=contributor.png>";
 			} else if ($b >= 5) {
-				echo "<li>Supporter<img src=supporter.png></li>";
+				echo "<img src=supporter.png>";
 			}
 			if ($c >= 100) {
-				echo "<li>Elite<img src=elite.png></li>";
+				echo "<img src=elite.png>";
 			} else if ($c >= 20) {
-				echo "<li>Promoter<img src=promoter.png></li>";
+				echo "<img src=promoter.png>";
 			} else if ($c >= 5) {
-				echo "<li>Shopper<img src=shopper.png></li>";
+				echo "<img src=shopper.png>";
 			}
 			if ($a >= 10 && $b >= 100 && $c >= 100) {
-				echo "<li>Evangelist<img src=evangelist.png></li>";
+				echo "<img src=evangelist.png>";
 			} else if ($a >= 5 && $b >= 20 && $c >= 20) {
-				echo "<li>Backer<img src=backer.png></li>";
+				echo "<img src=backer.png>";
 			} else if ($a >= 3 && $b >= 5 && $c >= 5) {
-				echo "<li>Explorer<img src=explorer.png></li>";
+				echo "<img src=explorer.png>";
 			}
 			echo "</ul>";
 			if ($row[9] == 1) {
