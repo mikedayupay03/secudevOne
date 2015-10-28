@@ -155,41 +155,33 @@
 			$a = $result[0];
 			$b = $result[1];
 			$c = $result[2];
-			if ($a >= 3) {
-				echo "<li>Participant</li>";
-			}
-			if ($a >= 5) {
-				echo "<li>Chatter</li>";
-			}
 			if ($a >= 10) {
-				echo "<li>Socialite</li>";
-			}
-			if ($b >= 5) {
-				echo "<li>Supporter</li>";
-			}
-			if ($b >= 20) {
-				echo "<li>Contributor</li>";
+				echo "<li>Socialite<img src=socialite.png></li>";
+			} else if ($a >= 5) {
+				echo "<li>Chatter<img src=chatter.png></li>";
+			} else if ($a >= 3) {
+				echo "<li>Participant<img src=participant.png></li>";
 			}
 			if ($b >= 100) {
-				echo "<li>Pillar</li>";
-			}
-			if ($c >= 5) {
-				echo "<li>Shopper</li>";
-			}
-			if ($c >= 20) {
-				echo "<li>Promoter</li>";
+				echo "<li>Pillar<img src=pillar.png></li>";
+			} else if ($b >= 20) {
+				echo "<li>Contributor<img src=contributor.png></li>";
+			} else if ($b >= 5) {
+				echo "<li>Supporter<img src=supporter.png></li>";
 			}
 			if ($c >= 100) {
-				echo "<li>Elite</li>";
-			}
-			if ($a >= 3 && $b >= 5 && $c >= 5) {
-				echo "<li>Explorer</li>";
-			}
-			if ($a >= 5 && $b >= 20 && $c >= 20) {
-				echo "<li>Backer</li>";
+				echo "<li>Elite<img src=elite.png></li>";
+			} else if ($c >= 20) {
+				echo "<li>Promoter<img src=promoter.png></li>";
+			} else if ($c >= 5) {
+				echo "<li>Shopper<img src=shopper.png></li>";
 			}
 			if ($a >= 10 && $b >= 100 && $c >= 100) {
-				echo "<li>Evangelist</li>";
+				echo "<li>Evangelist<img src=evangelist.png></li>";
+			} else if ($a >= 5 && $b >= 20 && $c >= 20)) {
+				echo "<li>Backer<img src=backer.png></li>";
+			} else if ($a >= 3 && $b >= 5 && $c >= 5) {
+				echo "<li>Explorer<img src=explorer.png></li>";
 			}
 			echo "</ul>";
 			if ($row[9] == 1) {
