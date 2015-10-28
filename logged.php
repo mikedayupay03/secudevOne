@@ -183,7 +183,6 @@
 			} else if ($a >= 3 && $b >= 5 && $c >= 5) {
 				echo "<img src=explorer.png>";
 			}
-			echo "</ul>";
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}
