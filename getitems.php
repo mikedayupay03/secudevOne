@@ -46,6 +46,9 @@
 
    echo "</td>";
    echo "<td>";
+   echo "<a href='cart.php?item_id=".$items[0]."'><button class='btn' type='button'><strong><center>Add to Cart</center></strong></button></a>";
+   echo "</td>";
+   echo "<td>";
    if($row[0] == $items[1] || $row['admin'] == 1){
      	echo "<a href='edititem.php?item_id=".$items[0]."'><button class='btn' type='button'><strong><center>Edit</center></strong></button></a>";
 		echo "</td>";
