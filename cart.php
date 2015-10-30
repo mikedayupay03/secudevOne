@@ -34,65 +34,16 @@
 ?>
 <html>
     <head>
-		<link rel="stylesheet" type="text/css" href="design.css">
-		<link rel="icon" type="image/ico" href="Favicon.ico">
-        <title>Magic Card Store</title>
+		<meta charset="utf-8">
+		<title>SECUDEV: Store</title>
+		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
     </head>
-    <body bgcolor="black">
- 	<span class ="imgpos">
-            <img src= http://www.tpreview.co.uk/wp-content/uploads/2013/12/magic_the_gathering_symbols_by_thekagestar-d37388h.png width="350" height="197">
-	</span>
-	<form action="http://localhost/mtgstore/home.php">
-	<span class = "buttonHomePos">
-	    <input type="submit" value="Home" class="button_home">
-	</span>
-	</form>
-	<form action="http://localhost/mtgstore/listCards.php" method="GET">
-	<span class = "buttonCommonPos">
-		<input type="hidden" name="rarity" value="Common">
-	    <input type="submit" value="Common" class="button_center">
-	</span>
-	</form>
-	<form action="http://localhost/mtgstore/listCards.php" method="GET">
-	<span class = "buttonUncommonPos">
-		<input type="hidden" name="rarity" value="Uncommon">
-	    <input type="submit" value="Uncommon" class="button_center">
-	</span>
-	</form>
-	<form action="http://localhost/mtgstore/listCards.php" method="GET">
-	<span class = "buttonRarePos">
-		<input type="hidden" name="rarity" value="Rare">
-	    <input type="submit" value="Rare" class="button_center">
-	</span>
-	</form>
-	<form action="http://localhost/mtgstore/listCards.php" method="GET">
-	<span class = "buttonMythicPos">
-		<input type="hidden" name="rarity" value="Mythic Rare">
-	    <input type="submit" value="Mythic Rare" class="button_right">
-	</span>
-	</form>
-
-	<form action="http://localhost/mtgstore/searchResults.php" method="post">
-	<span class = "searchPos">
-	    <input type="text" name="search" placeholder="Search card"/>
-	    <input type="image" src="http://www.iconsdb.com/icons/preview/white/search-3-xxl.png" height="15" width="15">
-	</span>
-	</form>
-
-	<form action="http://localhost/mtgstore/cart.php" method="post">
-	<span class = "cartPos">
-	    <input type="image" src="http://www.inmotionhosting.com/support/images/stories/icons/ecommerce/empty-cart-dark.png" height="27" width="27">
-	</span>
-	</form>
-	<span class="shoppingPos">
-	<form name="form1" method="post">
-	<input type="hidden" name="pid" />
-	<input type="hidden" name="command" />
-	<div style="margin:0px auto; width:870px;" >
-    <div style="padding-bottom:10px">
-    </div>
+    <body>
+        <header>
+			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href=""><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
+		</header>
     	<div style="color:#F00"><?php echo $msg?></div>
-    	<table border="0" cellpadding="5px" cellspacing="1px" style="font-family:Verdana, Geneva, sans-serif; color:white; font-size:13px; background-color:black" width="100%">
+    	<table border="0" cellpadding="5px" cellspacing="1px" style="font-family:Verdana, Geneva, sans-serif; color:black; font-size:13px; background-color:lightgreen" width="100%">
     	<?php
 			if(is_array($_SESSION['cart'])){
             	echo '<tr bgcolor="grey" style="font-weight:bold"><td>Number</td><td>Name</td><td>Price</td><td>Qty</td><td>Amount</td><td>Options</td></tr>';
@@ -103,7 +54,7 @@
 					$pname=get_product_name($pid);
 					if($q==0) continue;
 			?>
-            		<tr bgcolor="black"><td><?php echo $i+1?></td><td><?php echo $pname?></td>
+            		<tr bgcolor="lightgreen"><td><?php echo $i+1?></td><td><?php echo $pname?></td>
                     <td>$ <?php echo get_price($pid)?></td>
                     <td><input type="text" name="product<?php echo $pid?>" value="<?php echo $q?>" maxlength="3" size="2" /></td>                    
                     <td>$ <?php echo get_price($pid)*$q?></td>
