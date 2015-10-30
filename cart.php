@@ -1,7 +1,12 @@
 <?php
-	include_once "db.php";
+    include_once "db.php";
 	include_once "functions.php";
 	
+    error_reporting(0);
+	if(!isset($_SESSION['myusername'])){ //if login in session is not set
+    header("Location:index.php");
+	}
+    
 	error_reporting(E_ALL ^ E_NOTICE);
 	$msg="   ";
 	if($_REQUEST['command']=='delete' && $_REQUEST['pid']>0){

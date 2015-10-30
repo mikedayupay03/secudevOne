@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <?php
+    //functions for shopping cart
+    include_once "db.php";
+	include_once "functions.php";
+    
 	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "success"){
@@ -9,13 +13,21 @@
 			?> <script> alert("Export Successful"); </script> <?php
 		}
 	}
+    
 	error_reporting(0);
-	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
     header("Location:index.php");
 	}
-	mysql_connect("localhost","root","1234") or die (mysql_error());
-	mysql_select_db("secudev1") or die (mysql_error());
+    
+    if(isset($_REQUEST['command'])){
+	    if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
+		    $pid=$_REQUEST['productid'];
+			addtocart($pid, 1);
+			header("location:cart.php");
+			exit();
+		}
+	}
+    
 	//This code block is for deleting items
 	$myusername = $_SESSION['myusername'];
 	if(isset($_GET['item_id'])){
@@ -34,6 +46,13 @@
 		<title>SECUDEV: Store</title>
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
 		<script src="js/jquery.min.js"></script>
+        <script language="javascript">
+            function addToCart(pid){
+                document.form1.productid.value=pid;
+                document.form1.command.value='add';
+                document.form1.submit();
+            }
+        </script>
 	</head>
 	<body>
         <form id="logoutForm" action="logout.php" method="POST">
@@ -85,7 +104,7 @@
 
                echo "</td>";
                echo "<td>";
-               echo "<a href='cart.php?item_id=".$items[0]."'><button class='btn' type='button'><strong><center>Add to Cart</center></strong></button></a>";
+               echo "<input type='image' src='res/add-to-cart.png' onclick='addToCart(" . $items[0] . ")'>";
                echo "</td>";
                echo "<td>";
                if($row[0] == $items[1] || $row['admin'] == 1){
@@ -104,6 +123,13 @@
 
 			</div>
 		</div>
+        <!--FORM for adding to cart-->
+        <form name="form1">
+        <input type="hidden" name="productid" />
+        <input type="hidden" name="command" />
+        </form>
+        
 		<?php mysql_close(); ?>
+        
 	</body>
 </html>
