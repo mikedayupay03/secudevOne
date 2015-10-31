@@ -2,10 +2,7 @@
 session_start();
 mysql_connect("localhost","root","1234") or die (mysql_error());
 mysql_select_db("secudev1") or die (mysql_error());
-$sql1 = "SELECT * FROM salutations";
-$rs1 = mysql_query($sql1);
-$salutations = mysql_fetch_array($rs1);
-$strSQL = "SELECT COUNT(*) FROM userdb WHERE username = '" . $_SESSION["myusername"] . "' AND password = '" . $_POST["pass"] . "'";
+$strSQL = "SELECT COUNT(*) FROM items WHERE item_id = '" . $_GET["item_id"] . "'";
 $rs = mysql_query($strSQL);
 $row = mysql_fetch_array($rs);
 $count = $row[0];
@@ -27,13 +24,13 @@ foreach($required as $field) {
 	} else if ($isSpecial){
 		header("location:edititem.php?msg=special");
 	} else {
-		 if ($_POST["sex"] == 1) {	
-				$strSQL = "UPDATE userdb SET first_name = '" . $_POST["first_name"] . "', last_name = '" . $_POST["last_name"] . "', male = " . $_POST["sex"] . ", salutation = '" . $_POST["Select1"] . "', bday = '" . $_POST["bday"] . "', password = '" . $_POST["pass"] . "', about = '" . $_POST["me"] . "' WHERE username = '" . $_SESSION["myusername"] . "'";		
-		 } else if ($_POST["sex"] == 2) {
-				$strSQL = "UPDATE userdb SET first_name = '" . $_POST["first_name"] . "', last_name = '" . $_POST["last_name"] . "', male = " . '0' . ", salutation = '" . $_POST["Select1"] . "', bday = '" . $_POST["bday"] . "', password = '" . $_POST["pass"] . "', about = '" . $_POST["me"] . "' WHERE username = '" . $_SESSION["myusername"] . "'";	
-		 }
+		 if(isset($_GET['item_id'])){
+		 $itemId = $_GET['item_id'];
+		 $strSQL = "UPDATE items SET item_name = '" . $_POST["item_name"] . "', item_description = '" . $_POST["item_description"] . "', item_image = " . $_POST["item_image"] . ", item_price = '" . $_POST["item_price"] . "' WHERE item_id = '" . $itemId . "'";
 		 mysql_query($strSQL);
-		 header("location:logged.php?msg=success");
+		 }
+		 
+		 header("location:store.php?msg=success");
 	}
 
 

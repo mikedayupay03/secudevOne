@@ -7,7 +7,7 @@
 	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "success"){
-			?> <script> alert("Profile edited successfully!"); </script> <?php
+			?> <script> alert("Item edited successfully!"); </script> <?php
 		}
 		else if ($msg ==  "export"){
 			?> <script> alert("Export Successful"); </script> <?php

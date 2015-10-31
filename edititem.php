@@ -14,10 +14,6 @@
 			?> <script> alert("Please fill up all fields!"); </script> <?php
 		} else if ($msg ==  "special"){
 			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
-		} else if ($msg ==  "bday"){
-			?> <script> alert("Invalid Date!"); </script> <?php
-		} else if ($msg ==  "user"){
-			?> <script> alert("Username already taken!"); </script> <?php
 		}
 	}
 		
@@ -78,19 +74,6 @@
 
 		</script>
 
-		<!--<script>
-		function checkFields() {
-			document.getElementById("mensalute").disabled = true
-			document.getElementById("femalesalute").disabled = true
-			if (document.getElementById("m").checked) {
-				document.getElementById("mensalute").disabled = false
-			}
-			if (document.getElementById("f").checked) {
-				document.getElementById("femalesalute").disabled = false
-			}
-		}
-		setInterval("checkFields()",0);
-		</script>-->
 	</head>
 	<body>
 
@@ -103,7 +86,7 @@
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form action="#" method="post">
+				<form action="updateitem.php" method="post">
 					<h2>Edit Item</h2>
 					<hr>
 					Item name: <input type="text" name="item_name" size="50" maxlength="50" value="<?php echo $item_name;?>">
