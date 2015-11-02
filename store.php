@@ -35,6 +35,10 @@
 	$myusername = $_SESSION['myusername'];
 	if(isset($_GET['item_id'])){
 		$itemId = $_GET['item_id'];
+        $query="SELECT item_image FROM items WHERE item_id like '$itemId'";$result=mysql_query($query);
+		while($row = mysql_fetch_array($result)){
+		    unlink("item_images/" . $row['item_image']);	
+		}
 		$query="DELETE FROM items WHERE item_id = '" . $itemId . "'";
 		$result=mysql_query($query);
 	}
