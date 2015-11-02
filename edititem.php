@@ -7,6 +7,7 @@
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
 	$myusername = $_SESSION['myusername'];
+	$itemId = $_GET['item_id'];
 	
 	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];

@@ -27,9 +27,9 @@ foreach($required as $field) {
 		 if(isset($_GET['item_id'])){
 		 $itemId = $_GET['item_id'];
 		 $strSQL = "UPDATE items SET item_name = '" . $_POST["item_name"] . "', item_description = '" . $_POST["item_description"] . "', item_image = " . $_POST["item_image"] . ", item_price = '" . $_POST["item_price"] . "' WHERE item_id = '" . $itemId . "'";
-		 mysql_query($strSQL);
 		 }
 		 
+		 mysql_query($strSQL);
 		 header("location:store.php?msg=success");
 	}
 
