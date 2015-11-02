@@ -6,11 +6,8 @@ $rs = mysql_query($strSQL);
 $row = mysql_fetch_array($rs);
 $count = $row[0];
 
-$required = array('item_name', 'item_description', 'item_price', 'item_image');
+$required = array('item_name', 'item_description', 'item_price');
 
-$image = $_FILES['item_image'];
-	// Sanitize our inputs
-$image['item_name'] = mysql_real_escape_string($image['item_name']);
 $error = false;
 $isSpecial = false;
 
@@ -28,12 +25,8 @@ foreach($required as $field) {
 	} else if ($isSpecial){
 		header("location:store.php?msg=special");
 	} else {
-		 $strSQL = "INSERT INTO items(item_name,item_description,item_price,item_image) VALUES ('" . $_POST["item_name"] . "', '" . $_POST["item_description"] . "'," . $_POST["item_price"] . ",'" . $image['item_name'] . "'";
-					//INSERT INTO items(item_name,item_description,item_price,item_image) VALUES ('boots','friend ni dora',564,'Boots2.png');
-		 }
+		 $strSQL = "INSERT INTO items(item_name,item_description,item_price) VALUES ('" . $_POST["item_name"] . "', '" . $_POST["item_description"] . "','" . $_POST["item_price"] . "')";
 		 mysql_query($strSQL);
 		 header("location:store.php?msg=success");
-
-
-
+		 }
 ?>

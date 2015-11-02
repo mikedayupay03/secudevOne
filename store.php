@@ -7,9 +7,12 @@
 	if(isset($_GET['msg'])){
 		$msg = $_GET['msg'];
 		if ($msg ==  "success"){
-			?> <script> alert("Item edited successfully!"); </script> <?php
-		}
-		else if ($msg ==  "export"){
+			?> <script> alert("Success!"); </script> <?php
+		} else if ($msg ==  "fail"){
+			?> <script> alert("Please fill up all fields!"); </script> <?php
+		} else if ($msg ==  "special"){
+			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
+		} else if ($msg ==  "export"){
 			?> <script> alert("Export Successful"); </script> <?php
 		}
 	}
