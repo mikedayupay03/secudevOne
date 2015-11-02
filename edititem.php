@@ -86,7 +86,7 @@
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form id = "form2" action="updateitem.php" method="post">
+				<form id = "form2" action="updateitem.php?item_id=<?php echo $itemId?>" method="post" enctype="multipart/form-data">
 					<h2>Edit Item</h2>
 					<hr>
 					Item name: <input type="text" name="item_name" size="50" maxlength="50" value="<?php echo $item_name;?>">
@@ -97,8 +97,7 @@
 					<br><br>
 					Image: <input type="file" name="item_image" <?php echo $item_image;?>/><br />
 					<input type="hidden" name="MAX_FILE_SIZE" value="4000000" />
-
-				<input type='hidden' name='item_id' value="<?php echo "$itemId"; ?>"/> 
+ 
 				<input class="btn-danger" type="submit" name="additem" value="Submit">
 				<a href="store.php">
 						<button class="btn-danger" type="button" style="position: relative; top: 5px; width: 365px; height: 40px;">Cancel</button>
