@@ -1,4 +1,13 @@
 <?php
+	if(isset($_GET['msg'])){
+		$msg = $_GET['msg'];
+	if ($msg ==  "fail"){
+			?> <script> alert("Please fill up all fields!"); </script> <?php
+	} else if ($msg ==  "special"){
+			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
+	}
+	}
+	
 	error_reporting(0);
 	session_start();
 	if(!isset($_SESSION['myusername'])){ //if login in session is not set
@@ -7,16 +16,6 @@
 	mysql_connect("localhost","root","1234") or die (mysql_error());
 	mysql_select_db("secudev1") or die (mysql_error());
 	$myusername = $_SESSION['myusername'];
-	$itemId = $_GET['item_id'];
-	
-	if(isset($_GET['msg'])){
-		$msg = $_GET['msg'];
-		if ($msg ==  "fail"){
-			?> <script> alert("Please fill up all fields!"); </script> <?php
-		} else if ($msg ==  "special"){
-			?> <script> alert("Special Characters ()!#$%^&* are not allowed!"); </script> <?php
-		}
-	}
 		
 	$itemId = $_GET['item_id'];
 	$query="SELECT * FROM items WHERE item_id = '" . $itemId . "'";
@@ -87,7 +86,7 @@
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form action="updateitem.php" method="post">
+				<form id = "form2" action="updateitem.php" method="post">
 					<h2>Edit Item</h2>
 					<hr>
 					Item name: <input type="text" name="item_name" size="50" maxlength="50" value="<?php echo $item_name;?>">
@@ -99,6 +98,7 @@
 					Image: <input type="file" name="item_image" <?php echo $item_image;?>/><br />
 					<input type="hidden" name="MAX_FILE_SIZE" value="4000000" />
 
+				<input type='hidden' name='item_id' value="<?php echo "$itemId"; ?>"/> 
 				<input class="btn-danger" type="submit" name="additem" value="Submit">
 				<a href="store.php">
 						<button class="btn-danger" type="button" style="position: relative; top: 5px; width: 365px; height: 40px;">Cancel</button>

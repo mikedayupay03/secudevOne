@@ -3,7 +3,7 @@
 	if(isset($_GET['msg'])){	
 		$msg = $_GET['msg'];
 		if ($msg ==  "success"){
-			?> <script> alert("Profile edited successfully!"); </script> <?php
+			?> <script> alert("Message edited successfully!"); </script> <?php
 		}
 	}
 	
