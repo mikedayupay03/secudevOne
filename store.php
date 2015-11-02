@@ -62,11 +62,11 @@
             <input type="hidden" name="logout" id="logout"/>
         </form>
 		<header>
-			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href="cart.php"><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
+			<h1>WELCOME to the store <?php echo $row[1] . " " . $row[2] ?>! <a href="cart.php"><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
 		</header>
 
 		<div class="message_board">
-			<a href ='logged.php'>Go Back</a>
+			<a href ='logged.php'>Back to Homepage</a>
 			<h3>Store Items</h3>
 			
 			<?php	
@@ -74,8 +74,7 @@
 					echo "<a href='additem.php'><button class='btn' type='button'><strong><center>Add Item</center></strong></button></a>";
 					echo "</td>";
 				}
-              $sql = "SELECT * FROM items";
-              $query="SELECT item_id, item_name, item_description, item_image, item_price FROM items WHERE 1";
+              $query="SELECT * FROM items WHERE 1";
               $rs = mysql_query($query);
               $items = mysql_fetch_row($rs);
               // if($items) {
@@ -91,7 +90,7 @@
                 echo "<tr>
                 <td>";
 
-               echo "<a href='#?item_id=". $items[0] ."'>" . $items[1] . "</a>" . "<br>";//name of item
+               echo "<a href='item.php?item_id=". $items[0] ."'>" . $items[1] . "</a>" . "<br>";//name of item
                echo "<b>P</b>" . $items[4] . "<br>";//price of item
                
                if(isset($_GET['item_id'])){
