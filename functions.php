@@ -9,6 +9,13 @@
 		$row=mysql_fetch_array($result);
 		return $row['item_price'];
 	}
+    
+    function get_product_image($pid){
+		$result=mysql_query("select item_image from items where item_id=$pid") or die("select item_image from items where item_id=$pid"."<br/><br/>".mysql_error());
+		$row=mysql_fetch_array($result);
+		return $row['item_image'];
+	}
+    
 	function remove_product($pid){
 		$pid=intval($pid);
 		$max=count($_SESSION['cart']);

@@ -30,6 +30,12 @@
 				}
 			}
 		}
+    
+    //for getting user's name
+    $myusername = $_SESSION['myusername'];
+    $strSQL = "SELECT * FROM userdb WHERE username = '" . $myusername . "'";
+    $rs = mysql_query($strSQL);
+    $row = mysql_fetch_array($rs);
 		
 ?>
 <html>
@@ -42,11 +48,14 @@
         <header>
 			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href=""><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
 		</header>
+        <form name="form1" method="post">
+            <input type="hidden" name="pid" />
+            <input type="hidden" name="command" />
     	<div style="color:#F00"><?php echo $msg?></div>
     	<table border="0" cellpadding="5px" cellspacing="1px" style="font-family:Verdana, Geneva, sans-serif; color:black; font-size:13px; background-color:lightgreen" width="100%">
     	<?php
 			if(is_array($_SESSION['cart'])){
-            	echo '<tr bgcolor="grey" style="font-weight:bold"><td>Number</td><td>Name</td><td>Price</td><td>Qty</td><td>Amount</td><td>Options</td></tr>';
+            	echo '<tr bgcolor="grey" style="font-weight:bold"><td>Number</td><td>Name</td><td>Preview</td><td>Price</td><td>Qty</td><td>Amount</td><td>Options</td></tr>';
 				$max=count($_SESSION['cart']);
 				for($i=0;$i<$max;$i++){
 					$pid=$_SESSION['cart'][$i]['productid'];
@@ -55,6 +64,7 @@
 					if($q==0) continue;
 			?>
             		<tr bgcolor="lightgreen"><td><?php echo $i+1?></td><td><?php echo $pname?></td>
+                    <td><img src="item_images/<?php echo get_product_image($pid)?>" height="100" width="100"></td>
                     <td>$ <?php echo get_price($pid)?></td>
                     <td><input type="text" name="product<?php echo $pid?>" value="<?php echo $q?>" maxlength="3" size="2" /></td>                    
                     <td>$ <?php echo get_price($pid)*$q?></td>
@@ -72,7 +82,7 @@
 			<?php
             }
 			else{
-				echo "<tr bgColor='black'><td>There are no items in your shopping cart!</td>";
+				echo "<tr bgColor='white'><td>There are no items in your shopping cart!</td>";
 			}
 		?>
         </table>
