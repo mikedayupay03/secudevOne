@@ -71,7 +71,7 @@
                     <td><input type="text" name="product<?php echo $pid?>" value="<?php echo $q?>" maxlength="3" size="2" /></td>                    
                     <td>$ <?php echo get_price($pid)*$q?></td>
                     <td><a href="javascript:del(<?php echo $pid?>)">Remove</a></td></tr>
-                    <input type="hidden" name="business" value="markg.romantigue@gmail.com">
+                    <input type="hidden" name="business" value="aldubfanatics@gmail.com">
                     <input type="hidden" name="item_name_<?php echo $i+1?>" value="<?php echo $pname?>">
                     <input type="hidden" name="amount_<?php echo $i+1?>" value="<?php echo get_price($pid)?>">
                     <input type="hidden" name="quantity_<?php echo $i+1?>" value="<?php echo $q?>">
@@ -117,7 +117,7 @@
     
     form = document.getElementById("form1");
     function checkout() {
-        form.action="https://www.paypal.com/cgi-bin/webscr";
+        form.action="https://www.sandbox.paypal.com/cgi-bin/webscr";
         form.submit();
     }
 	</script>
