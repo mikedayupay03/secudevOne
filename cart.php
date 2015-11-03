@@ -48,9 +48,11 @@
         <header>
 			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href=""><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
 		</header>
-        <form name="form1" method="post">
+        <form name="form1" id="form1" method="post">
             <input type="hidden" name="pid" />
             <input type="hidden" name="command" />
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
     	<div style="color:#F00"><?php echo $msg?></div>
     	<table border="0" cellpadding="5px" cellspacing="1px" style="font-family:Verdana, Geneva, sans-serif; color:black; font-size:13px; background-color:lightgreen" width="100%">
     	<?php
@@ -69,6 +71,10 @@
                     <td><input type="text" name="product<?php echo $pid?>" value="<?php echo $q?>" maxlength="3" size="2" /></td>                    
                     <td>$ <?php echo get_price($pid)*$q?></td>
                     <td><a href="javascript:del(<?php echo $pid?>)">Remove</a></td></tr>
+                    <input type="hidden" name="business" value="markg.romantigue@gmail.com">
+                    <input type="hidden" name="item_name_<?php echo $i+1?>" value="<?php echo $pname?>">
+                    <input type="hidden" name="amount_<?php echo $i+1?>" value="<?php echo get_price($pid)?>">
+                    <input type="hidden" name="quantity_<?php echo $i+1?>" value="<?php echo $q?>">
             <?php					
 				}
 			?>
@@ -78,7 +84,7 @@
 				<tr><td><b>Order Total: $<?php echo get_order_total()?></b></td><td colspan="5" align="right">
 				<input type="button" value="Clear Cart" onclick="clear_cart()">
 				<input type="button" value="Update Cart" onclick="update_cart()">
-				<input type="button" value="Place Order" onclick="window.location='billing.php?total=<?php echo $total;?>'"></td></tr>
+				<input type="button" value="Place Order" onclick="checkout()"></td></tr>
 			<?php
             }
 			else{
@@ -108,6 +114,12 @@
 		document.form1.command.value='update';
 		document.form1.submit();
 	}
+    
+    form = document.getElementById("form1");
+    function checkout() {
+        form.action="https://www.paypal.com/cgi-bin/webscr";
+        form.submit();
+    }
 	</script>
 	
     </body>
