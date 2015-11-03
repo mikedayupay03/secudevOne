@@ -18,6 +18,7 @@
 	mysql_select_db("secudev1") or die (mysql_error());
 	//This code block is for deleting messages
 	$myusername = $_SESSION['myusername'];
+	echo $myusername;
 	if(isset($_GET['message_id'])){
 		$messageId = $_GET['message_id'];
 		$query="DELETE FROM message_board WHERE message_id like '$messageId'";
@@ -150,7 +151,7 @@
 			echo "Username: " . $row[6] . "<br>";
 			echo "About: " . $row[8] . "<br>";
 			echo "Badges: <br>";
-			$query = "SELECT a.posts,a.donations,a.purchases FROM badges a , userdb b WHERE b.username = '" . $myusername . "'";
+			$query = "SELECT a.posts,a.donations,a.purchases FROM badges a , userdb b WHERE (b.username = '" . $myusername . "' AND a.user_id = b.user_id)";
 			$result = mysql_fetch_array(mysql_query($query));
 			$a = $result[0];
 			$b = $result[1];
