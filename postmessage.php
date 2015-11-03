@@ -20,6 +20,7 @@
   //To protect from XSS attacks and Mysql Injection
   $message =($_POST["message"] );
   $message = $purifier->purify($message);
+  $message = mysql_real_escape_string($message);
   $insertMessageQuery = "INSERT INTO message_board(user_id, message, date_posted) VALUES ('" . $userId[0] . "', '" . $message . "', CURRENT_TIMESTAMP)";
   $result = mysql_query($insertMessageQuery);
   if ($result) {

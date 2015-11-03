@@ -149,49 +149,40 @@
 			echo "Birthday: " . $row[5] . "<br>";
 			echo "Username: " . $row[6] . "<br>";
 			echo "About: " . $row[8] . "<br>";
-			echo "Badges: <ul>";
-			$query = "SELECT a.posts,a.donations,a.purchases FROM badges a , userdb b WHERE b.username = '" . $myusername . "'";
+			echo "Badges: <br>";
+			$query = "SELECT a.posts,a.donations,a.purchases FROM badges a , userdb b WHERE (b.username = '" . $myusername . "' AND a.user_id = b.user_id)";
 			$result = mysql_fetch_array(mysql_query($query));
 			$a = $result[0];
 			$b = $result[1];
 			$c = $result[2];
-			if ($a >= 3) {
-				echo "<li>Participant</li>";
-			}
-			if ($a >= 5) {
-				echo "<li>Chatter</li>";
-			}
 			if ($a >= 10) {
-				echo "<li>Socialite</li>";
-			}
-			if ($b >= 5) {
-				echo "<li>Supporter</li>";
-			}
-			if ($b >= 20) {
-				echo "<li>Contributor</li>";
+				echo "<img src=socialite.png>";
+			} else if ($a >= 5) {
+				echo "<img src=chatter.png>";
+			} else if ($a >= 3) {
+				echo "<img src=participant.png>";
 			}
 			if ($b >= 100) {
-				echo "<li>Pillar</li>";
-			}
-			if ($c >= 5) {
-				echo "<li>Shopper</li>";
-			}
-			if ($c >= 20) {
-				echo "<li>Promoter</li>";
+				echo "<img src=pillar.png>";
+			} else if ($b >= 20) {
+				echo "<img src=contributor.png>";
+			} else if ($b >= 5) {
+				echo "<img src=supporter.png>";
 			}
 			if ($c >= 100) {
-				echo "<li>Elite</li>";
-			}
-			if ($a >= 3 && $b >= 5 && $c >= 5) {
-				echo "<li>Explorer</li>";
-			}
-			if ($a >= 5 && $b >= 20 && $c >= 20) {
-				echo "<li>Backer</li>";
+				echo "<img src=elite.png>";
+			} else if ($c >= 20) {
+				echo "<img src=promoter.png>";
+			} else if ($c >= 5) {
+				echo "<img src=shopper.png>";
 			}
 			if ($a >= 10 && $b >= 100 && $c >= 100) {
-				echo "<li>Evangelist</li>";
+				echo "<img src=evangelist.png>";
+			} else if ($a >= 5 && $b >= 20 && $c >= 20) {
+				echo "<img src=backer.png>";
+			} else if ($a >= 3 && $b >= 5 && $c >= 5) {
+				echo "<img src=explorer.png>";
 			}
-			echo "</ul>";
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
 			}

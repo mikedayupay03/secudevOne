@@ -20,9 +20,9 @@
 	}
 	
 	$message_id = $_POST['message_id'];
-    //$editedMessage = mysql_real_escape_string($_POST["message"] );
-    $editedMessage =($_POST["message"] );
+    $editedMessage = $_POST["message"];
 	$editedMessage = $purifier->purify($editedMessage);
+    $editedMessage = mysql_real_escape_string($editedMessage);
 	if ($error) {
 	    header("location:profile.php?msg=fail");
 	} else if ($isSpecial){

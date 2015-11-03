@@ -76,7 +76,7 @@
 		</nav>
 		<div class="container">
 			<div class="content">
-				<form action="insertitem.php" method="post">
+				<form action="insertitem.php" method = "post" enctype="multipart/form-data">
 					<h2>Add Item</h2>
 					<hr>
 					Item name: <input type="text" name="item_name" size="50" maxlength="50" value="">
