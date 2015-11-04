@@ -34,6 +34,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>SECUDEV: Landing Page</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css"charset="utf-8">
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
 		<script src="js/jquery.min.js"></script>
 		<script type="text/javascript">
@@ -62,8 +64,8 @@
 			// 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// 			document.getElementById("message_container").innerHTML = xmlhttp.responseText;
 			// 		}
-			// 	}
 			//
+			// 	}
 			// 	xmlhttp.open("GET", "getMessages.php", true);
 			// 	xmlhttp.send();
 			// }
@@ -80,7 +82,7 @@
 			$("#advanced").hide();
             $("#hideButton").hide();
 		});
-        
+
         function toggle (advanced){
             if(advanced){
                 $("#advanced").show();
@@ -92,7 +94,7 @@
                 $("#hideButton").hide();
             }
         }
-        
+
         </script>
         <script>
             var a = 0;
@@ -115,7 +117,7 @@
                 document.getElementById("testing").appendChild(newDiv);
                 b++;
             }
-            
+
             function myFunction(name1,name2) {
                 var x = document.getElementById(name1).value;
                 if (x == 1) {
@@ -208,14 +210,14 @@
 				Search messages: <input type="text" name="squery">
 				<input type="submit"/>
 				<button type="button" id="advancedButton" onclick="toggle(1)">Advanced Search</button>
-		
+
 				<?php
 					if($row['admin'] == 1){
 						echo "<br><a href='export.php'>Backup Posts</a><br>";
 						echo "<a href='backupposts.php'>See Backup Posts</a>";
 					}
 				 ?>
-               
+
                 <button type="button" id="hideButton" style="position:absolute; left:375px; top: 505px;" onclick="toggle(0)">Hide Advanced Search</button>
                 <div id="advanced">
                 <div id="testing"></div><br>
@@ -234,32 +236,38 @@
 		<?php mysql_close(); ?>
 
 	<footer>
-		
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="R52KC2QZTC6UN">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
+		<div class="donate1">
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="BGD2FEU2LQUFN">
+				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
 
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="HAHQR4HSXA7JA">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
-	
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<h4>Donate P5</h4>
+		</div>
 
-			<input type="hidden" name="cmd" value="_s-xclick">
+		<div class="donate2">
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="B652MZK2C99CJ">
+				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
 
-			<input type="hidden" name="hosted_button_id" value="BDDYB3BXUZFK8">
+			<h4>Donate P10</h4>
+		</div>
 
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<div class="donate3">
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="HUNN9YMD44LAU">
+				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			<h4>Donate P20</h4>
+		</div>
 
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-
-		</form>
 	</footer>
 
 
