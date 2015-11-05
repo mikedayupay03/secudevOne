@@ -41,7 +41,7 @@
 <html>
     <head>
 		<meta charset="utf-8">
-		<title>SECUDEV: Store</title>
+		<title>SECUDEV: Cart</title>
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
     </head>
     <body>
@@ -71,10 +71,13 @@
                     <td><input type="text" name="product<?php echo $pid?>" value="<?php echo $q?>" maxlength="3" size="2" /></td>                    
                     <td>$ <?php echo get_price($pid)*$q?></td>
                     <td><a href="javascript:del(<?php echo $pid?>)">Remove</a></td></tr>
-                    <input type="hidden" name="business" value="aldubfanatics@gmail.com">
+                    <input type="hidden" name="business" value="markg.romantigue-facilitator@gmail.com">
                     <input type="hidden" name="item_name_<?php echo $i+1?>" value="<?php echo $pname?>">
                     <input type="hidden" name="amount_<?php echo $i+1?>" value="<?php echo get_price($pid)?>">
                     <input type="hidden" name="quantity_<?php echo $i+1?>" value="<?php echo $q?>">
+                    <!--<input type="hidden" name="notify_url" value="http://192.168.98.54/secudevOne/ipn_paypal.php">-->
+                    <input type='hidden' name='rm' value='2'>
+                    <input type="hidden" name="return" value="http://292c8586.ngrok.io/secudevOne/return.php">
             <?php					
 				}
 			?>
