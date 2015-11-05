@@ -67,14 +67,15 @@
 			?>
             		<tr bgcolor="lightgreen"><td><?php echo $i+1?></td><td><?php echo $pname?></td>
                     <td><img src="item_images/<?php echo get_product_image($pid)?>" height="100" width="100"></td>
-                    <td>$ <?php echo get_price($pid)?></td>
+                    <td>₱ <?php echo get_price($pid)?></td>
                     <td><input type="text" name="product<?php echo $pid?>" value="<?php echo $q?>" maxlength="3" size="2" /></td>                    
-                    <td>$ <?php echo get_price($pid)*$q?></td>
+                    <td>₱ <?php echo get_price($pid)*$q?></td>
                     <td><a href="javascript:del(<?php echo $pid?>)">Remove</a></td></tr>
                     <input type="hidden" name="business" value="markg.romantigue-facilitator@gmail.com">
                     <input type="hidden" name="item_name_<?php echo $i+1?>" value="<?php echo $pname?>">
                     <input type="hidden" name="amount_<?php echo $i+1?>" value="<?php echo get_price($pid)?>">
                     <input type="hidden" name="quantity_<?php echo $i+1?>" value="<?php echo $q?>">
+                    <input type="hidden" name="currency_code" value="PHP">
                     <!--<input type="hidden" name="notify_url" value="http://192.168.98.54/secudevOne/ipn_paypal.php">-->
                     <input type='hidden' name='rm' value='2'>
                     <input type="hidden" name="return" value="http://292c8586.ngrok.io/secudevOne/return.php">
@@ -84,7 +85,7 @@
 			<?php
 			$total = get_order_total();
 			?>
-				<tr><td><b>Order Total: $<?php echo get_order_total()?></b></td><td colspan="5" align="right">
+				<tr><td><b>Order Total: ₱<?php echo get_order_total()?></b></td><td colspan="5" align="right">
 				<input type="button" value="Clear Cart" onclick="clear_cart()">
 				<input type="button" value="Update Cart" onclick="update_cart()">
 				<input type="button" value="Place Order" onclick="checkout()"></td></tr>
