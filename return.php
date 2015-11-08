@@ -56,5 +56,13 @@ if(!$res){
  
 ?>
 
- 
+<?php
+session_start();
+$myusername = $_SESSION['myusername'];
+mysql_connect("localhost","root","1234") or die (mysql_error());
+mysql_select_db("secudev1") or die (mysql_error());
+$strSQL = "UPDATE badges a, userdb b SET purchases = purchases + 1 WHERE a.user_id = b.user_id AND b.username = '" . $myusername . "'";
+mysql_query($strSQL);
+mysql_close();
+?> 
 Your transaction has been completed, and a receipt for your purchase has been emailed to you.<br> You may log into your account at <a href='https://www.paypal.com'>www.paypal.com</a> to view details of this transaction.<br>
