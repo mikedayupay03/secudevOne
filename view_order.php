@@ -105,7 +105,7 @@
 					//PRINT CARDS BOUGHT
 					$count = count($values);
 					echo"<table border='1' cellpadding='5px' cellspacing='1px'>";
-					echo '<tr bgcolor="grey" style="font-weight:bold"><td width="30%">Item Name</td><td align="center">Price</td><td align="center">Quantity</td><td align="center">Subtotal</td></tr>';
+					echo '<tr bgcolor="grey" style="font-weight:bold"><td width="30%">Item Name</td><td align="center">Price</td><td align="center">Quantity</td><td align="center">Subtotal</td><td align="center">Payment Status</td></tr>';
 					for($i=0; $i<$count; $i++){
 						echo"<tr>";
 						echo"<td>";
@@ -123,12 +123,18 @@
 						echo "<td align= 'center'>";
 						echo $values2[$i] * $row['item_price'] . " Pesos";
 						echo "</td>";
-					}
-					echo"</tr>";
-					$query="SELECT * FROM orders WHERE order_id = '$orderId'";
+                        
+                        $query="SELECT * FROM orders WHERE order_id = '$orderId'";
 						$result=mysql_query($query);
 						$row = mysql_fetch_array($result);
-					echo '<tr bgcolor="lightgreen" style="font-weight:bold"><td colspan="4" align="right">Order Total: '
+                        
+                        echo "<td align= 'center'>";
+						echo $row['status'];
+						echo "</td>";
+					}
+					echo"</tr>";
+					
+					echo '<tr bgcolor="lightgreen" style="font-weight:bold"><td colspan="5" align="right">Order Total: '
 						 . $row['total_price']. ' Pesos' .'</td></tr>';
 					echo"</table>";
 					echo "<br>";

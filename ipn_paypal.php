@@ -68,7 +68,7 @@ if($_POST)
             while($row = mysql_fetch_array($result)){
                     $customerId = $row['customer_id'];
             }
-            $query="INSERT INTO orders (total_price, date_created, customer_id) VALUES('$total', now(), '$customerId')";
+            $query="INSERT INTO orders (total_price, date_created, customer_id, status) VALUES('$total', now(), '$customerId', '$paymentstatus')";
             $result=mysql_query($query);
             
             // insert into our cart table
