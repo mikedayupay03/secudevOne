@@ -48,6 +48,23 @@
                 $("form#logoutForm").submit();
             }
     </script>
+    <script>
+            var a = 0;
+            var b = 0;
+            var elem = 1;
+            /*function moreDates() {
+                elem = this;
+                var newDiv = document.createElement('div');
+                alert(elem.value);
+            }*/
+
+            function addDates(name) {
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select name='cond'><option value=AND>AND</option><option value=OR>OR</option></select> <select id=doption" + b + "  name=doption[] onchange=myFunction('doption" + b + "','hider" + b + "')><option value=1>Between</option><option value=2>Earlier</option><option value=3>Later</option><option value=4>During</option></select></div> <div id=temp style= display:inline;><input type=date name='d0[]'> <input type=date id=hider" + b + " name=d1[]></div></div>";
+                document.getElementById("testing").appendChild(newDiv);
+                b++;
+            }
+    </script>
 </head>
 <body>
     <header>
@@ -75,6 +92,11 @@
                 ?>
 
 			<div class="content">
+            <form method="post" action="query.php">
+                <div id="testing"></div><br>
+                <div id="testing2"></div>
+                    <input type="button" value='Filter by date' onClick=addDates('testing')>
+            </form>
 				<?php
 					connect();
 					$query="SELECT * from customer c, orders o WHERE c.customer_id = o. customer_id";$result=mysql_query($query);
