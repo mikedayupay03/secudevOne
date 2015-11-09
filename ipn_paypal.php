@@ -44,7 +44,7 @@ if($_POST)
             $total = $_POST['mc_gross'];
             $mdate= date('Y-m-d h:i:s',strtotime($paymentdate));
             $otherstuff = json_encode($_POST);
-            
+
             echo $transaction_id;
 
             $conn = mysql_connect($dbhost,$dbusername,$dbpassword);
@@ -62,7 +62,7 @@ if($_POST)
             ('$firstname $lastname','$payeremail')";
             $result=mysql_query($query);
 
-            
+
             // insert into our orders table
             $query="SELECT * FROM customer WHERE name like '$firstname $lastname' ";
             $result=mysql_query($query);
@@ -71,13 +71,19 @@ if($_POST)
             }
             $query="INSERT INTO orders (total_price, date_created, customer_id, status) VALUES('$total', now(), '$customerId', '$paymentstatus')";
             $result=mysql_query($query);
-            
+
             // insert into our cart table
             $query="SELECT order_id FROM orders WHERE customer_id like $customerId ORDER BY order_id DESC";
             $result=mysql_query($query);
             $row = mysql_fetch_array($result);
             $orderId = $row['order_id'];
-            
+
+            $sql = "INSERT INTO donations (donators_name, donators_email, donation_amount) VALUES ('$firstname $lastname', '$payeremail', '$total')";
+            $result=mysql_query($sql);
+
+            $strSQL = "UPDATE badges a, userdb b SET donations = donations + 1 WHERE a.user_id = b.user_id AND b.username = '" . $myusername . "'";
+            mysql_query($strSQL);
+
             $max=$_POST["num_cart_items"];
                 for($i=0;$i<$max;$i++){
                     $j = $i+1;
