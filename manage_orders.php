@@ -48,6 +48,23 @@
                 $("form#logoutForm").submit();
             }
     </script>
+    <script>
+            var a = 0;
+            var b = 0;
+            var elem = 1;
+            /*function moreDates() {
+                elem = this;
+                var newDiv = document.createElement('div');
+                alert(elem.value);
+            }*/
+
+            function addDates(name) {
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML = "<br><div id=container><div id=temp2 style= display:inline;><select name='cond'><option value=AND>AND</option><option value=OR>OR</option></select> <select id=doption" + b + "  name=doption[] onchange=myFunction('doption" + b + "','hider" + b + "')><option value=1>Between</option><option value=2>Earlier</option><option value=3>Later</option><option value=4>During</option></select></div> <div id=temp style= display:inline;><input type=date name='d0[]'> <input type=date id=hider" + b + " name=d1[]></div></div>";
+                document.getElementById("testing").appendChild(newDiv);
+                b++;
+            }
+    </script>
 </head>
 <body>
     <header>
@@ -75,20 +92,26 @@
                 ?>
 
 			<div class="content">
+            <form method="post" action="query.php">
+                <div id="testing"></div><br>
+                <div id="testing2"></div>
+                    <input type="button" value='Filter by date' onClick=addDates('testing')>
+            </form>
 				<?php
 					connect();
 					$query="SELECT * from customer c, orders o WHERE c.customer_id = o. customer_id";$result=mysql_query($query);
 					echo "<p></p>";
 					echo '<table class="rockwell" width="100%">';
-					echo '<tr bgcolor="grey" style="font-weight:bold"><td width="30%">Customer Name</td><td align="center">Options</td></tr>';
+					echo '<tr bgcolor="grey" style="font-weight:bold"><td width="30%">Customer Name</td><td align="center">Options</td><td align="center">Status</td></tr>';
 					while($row = mysql_fetch_array($result)){
 						echo
 						"<table border='1' cellpadding='5px' cellspacing='1px' style='font-family:Verdana, Geneva, sans-serif; color:white; font-size:13px; background-color:black' width='100%'>"
 						."<tr><td width = '30%'>"
-						.'<a href="card.php?name='.$row['name'].'">' ."<font color='white'>". $row['name']."</font>" . '</a>' 
+						."<font color='white'>". $row['name']."</font>"
 						. "</td>"
-						."<td align='center'><a href='view_order.php?order_id=".$row['order_id']."&customer_id=".$row['customer_id']."'><font color='white'>View Order</font></a></td>"	
-						."<td align='center'><a href='manage_orders.php?order_id=".$row['order_id']."&customer_id=".$row['customer_id']."'" ?> onclick="return confirm('Are you sure you want to delete this order?')";<?php echo "><font color='white'>Delete Order</font></a></td></tr>"	
+						."<td width = '20%' align='center'><a href='view_order.php?order_id=".$row['order_id']."&customer_id=".$row['customer_id']."'><font color='white'>View Order</font></a></td>"	
+						."<td width = '20%' align='center'><a href='manage_orders.php?order_id=".$row['order_id']."&customer_id=".$row['customer_id']."'" ?> onclick="return confirm('Are you sure you want to delete this order?')";<?php echo "><font color='white'>Delete Order</font></a></td>"
+                        ."<td width = '30%' align='center'><font color='white'>". $row['status']."</font></td></tr>"                        
 						."</table>";
 					}
 					echo '</table>';

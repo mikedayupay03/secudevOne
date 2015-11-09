@@ -6,6 +6,7 @@
     $dbpassword     = '1234'; //db password
     $dbhost     = 'localhost'; //db host
     $dbname     = 'secudev1'; //db name
+    $myusername = $_SESSION['myusername'];
 
 if($_POST)
 {
@@ -68,7 +69,7 @@ if($_POST)
             while($row = mysql_fetch_array($result)){
                     $customerId = $row['customer_id'];
             }
-            $query="INSERT INTO orders (total_price, date_created, customer_id) VALUES('$total', now(), '$customerId')";
+            $query="INSERT INTO orders (total_price, date_created, customer_id, status) VALUES('$total', now(), '$customerId', '$paymentstatus')";
             $result=mysql_query($query);
             
             // insert into our cart table
@@ -90,6 +91,8 @@ if($_POST)
                     $qty=$_POST[$qtyvar . $j];
                     $query="INSERT INTO cart (order_id, customer_id, item_id, quantity) VALUES('$orderId', '$customerId', '$pid', '$qty')";
                     $result=mysql_query($query);
+                    $strSQL = "UPDATE badges a, userdb b SET purchases = purchases + 1 WHERE a.user_id = b.user_id AND b.username = '" . $myusername . "'";
+                    mysql_query($strSQL);
                 }
 
 
