@@ -187,6 +187,7 @@
 			}
 			if ($row[9] == 1) {
 			 echo "<br><a href=admin.php>Admin User Registration Page</a>";
+             echo "<br><a href=manage_orders.php>Admin Management Console</a>";
 			}
 			echo "<br><br><a href='#' onclick='logoutFunction();'>Log Out</a>";
 			?>
