@@ -76,9 +76,9 @@
                     <input type="hidden" name="amount_<?php echo $i+1?>" value="<?php echo get_price($pid)?>">
                     <input type="hidden" name="quantity_<?php echo $i+1?>" value="<?php echo $q?>">
                     <input type="hidden" name="currency_code" value="PHP">
-                    <!--<input type="hidden" name="notify_url" value="http://192.168.98.54/secudevOne/ipn_paypal.php">-->
+                    <input type="hidden" name="notify_url" value="http://9393ad92.ngrok.io/secudev/one/ipn_paypal.php">
                     <input type='hidden' name='rm' value='2'>
-                    <input type="hidden" name="return" value="http://ad3aaf69.ngrok.io/secudevOne/cart.php">
+                    <input type="hidden" name="return" value="http://9393ad92.ngrok.io/secudev/one/cart.php">
             <?php					
 				}
 			?>
