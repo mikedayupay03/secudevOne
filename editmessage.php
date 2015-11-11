@@ -24,13 +24,19 @@
         $row = mysql_fetch_array($rs);
         
         $message_id = $_GET['message_id'];
-        $about = $row["about"];
+        $loggedId = $row['user_id'];
     }
     
-    $q = "SELECT message FROM message_board WHERE message_id =" . $message_id;
+    $q = "SELECT * FROM message_board WHERE message_id =" . $message_id;
     $rs2 = mysql_query($q);
     $row2 = mysql_fetch_array($rs2);
     $message = $row2['message'];
+    $userId = $row2['user_id'];
+    echo $userId;
+    echo $loggedId;
+    if($userId != $loggedId){
+        header("location:logged.php?msg=fail");
+    }
 ?>
 
 <html>

@@ -4,9 +4,10 @@
 		$msg = $_GET['msg'];
 		if ($msg ==  "success"){
 			?> <script> alert("Profile edited successfully!"); </script> <?php
-		}
-		else if ($msg ==  "export"){
+		}else if ($msg ==  "export"){
 			?> <script> alert("Export Successful"); </script> <?php
+		}else if ($msg ==  "fail"){
+			?> <script> alert("You do not have permission to edit this message!"); </script> <?php
 		}
 	}
 	error_reporting(0);
