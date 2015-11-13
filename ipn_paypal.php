@@ -6,8 +6,6 @@
     $dbpassword     = '1234'; //db password
     $dbhost     = 'localhost'; //db host
     $dbname     = 'secudev1'; //db name
-	
-	echo $_SESSION[0];
 
 if($_POST)
 {
@@ -82,11 +80,6 @@ if($_POST)
             $sql = "INSERT INTO donations (donators_name, donators_email, donation_amount) VALUES ('$firstname $lastname', '$payeremail', '$total')";
             $result=mysql_query($sql);
 
-			$mu = $_SESSION['myusername'];
-			
-			$query = "UPDATE badges a, userdb b SET a.donations = a.donations + 1 WHERE (a.user_id = b.user_id AND b.username = '". $mu ."')";
-			$result = mysql_query($query);
-
             $max=$_POST["num_cart_items"];
                 for($i=0;$i<$max;$i++){
                     $j = $i+1;
@@ -100,8 +93,6 @@ if($_POST)
                     $qty=$_POST[$qtyvar . $j];
                     $query="INSERT INTO cart (order_id, customer_id, item_id, quantity) VALUES('$orderId', '$customerId', '$pid', '$qty')";
                     $result=mysql_query($query);
-                    $query = "UPDATE badges a, userdb b SET a.donations = a.donations + 1 WHERE (a.user_id = b.user_id AND b.username = '". $mu ."')";
-					$result = mysql_query($query);
                 }
 
 

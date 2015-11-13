@@ -132,6 +132,12 @@
     </script>
 	</head>
 	<body>
+		<?php
+		if ($_GET["tx"] != NULL) {
+			$query = "UPDATE badges a, userdb b SET a.donations = a.donations + ". $_GET["amt"] ." WHERE (a.user_id = b.user_id AND b.username = '". $_SESSION['myusername'] ."')";
+			mysql_query($query);
+		}
+		?>
         <form id="logoutForm" action="logout.php" method="POST">
             <input type="hidden" name="logout" id="logout"/>
         </form>

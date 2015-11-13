@@ -45,6 +45,12 @@
 		<link rel="stylesheet" href="css/landing-page.css" charset="utf-8">
     </head>
     <body>
+		<?php
+		if ($_GET["tx"] != NULL) {
+			$query = "UPDATE badges a, userdb b SET a.purchases = a.purchases + ". $_GET["amt"] ." WHERE (a.user_id = b.user_id AND b.username = '". $_SESSION['myusername'] ."')";
+			mysql_query($query);
+		}
+		?>
         <header>
 			<h1>WELCOME <?php echo $row[1] . " " . $row[2] ?>! <a href=""><img align="right" src= "res/cart.png" width="95" height="50"></a><a href="store.php"><img align="right" src= "res/store.png" width="95" height="50"></h1></a>
 		</header>
@@ -76,9 +82,8 @@
                     <input type="hidden" name="amount_<?php echo $i+1?>" value="<?php echo get_price($pid)?>">
                     <input type="hidden" name="quantity_<?php echo $i+1?>" value="<?php echo $q?>">
                     <input type="hidden" name="currency_code" value="PHP">
-                    <input type="hidden" name="notify_url" value="http://9393ad92.ngrok.io/secudev/one/ipn_paypal.php">
                     <input type='hidden' name='rm' value='2'>
-                    <input type="hidden" name="return" value="http://9393ad92.ngrok.io/secudev/one/cart.php">
+                    <input type="hidden" name="return" value="http://a857d645.ngrok.io/secudev/one/cart.php">
             <?php					
 				}
 			?>
